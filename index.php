@@ -1,17 +1,17 @@
 <?php
     require("common/env.php");
     require("common/function.php");
-    require("admin/all/all.php");
-    // require("")
-    // require("")
+    require("all/all.php");
+    require("control/queryControl.php");
+    require("model/query.php");
     // require("")
 
 
     $act = $_GET['act'] ?? "";
     $id = $_GET['id'] ?? "";
 
-    // match ($act) {
-        
-    // }
+    match ($act) {
+        "" => (new queryControl) -> list()
+    }
     
 ?>

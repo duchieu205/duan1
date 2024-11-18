@@ -14,6 +14,9 @@
             try {
                 $sql = "SELECT * FROM `sanpham`";
                 $result = $this->pdo->query($sql)->fetchAll();
+                // echo "<pre>";
+                // print_r($result);
+                // echo "</pre>";
                 $array_product = [];
                 foreach($result as $rs) {
                     $sanpham = new sanpham;
@@ -27,24 +30,15 @@
                     $array_product[] = $sanpham;
                 }
                 return $array_product;
+                
             }
 
             catch (Exception $e) {
                 $e->getMessage();
             }
         }
-        
-        public function deleteProduct($id) {
-            try {
-                $sql = "DELETE FROM `sanpham` WHERE `id` = $id";
-                $result = this->pdo->exec($sql);
-                return $result;
-            }
-            catch (Exception $e) {
-                $e->getMessage();
-            }
-        }
 
-        
+
     }
+
 ?>

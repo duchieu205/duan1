@@ -1,5 +1,5 @@
 <?php
-    require("all/all.php");
+    require("../all/all.php");
     require("../common/env.php");
     require("../common/function.php");
     require_once("control/queryControl.php");
