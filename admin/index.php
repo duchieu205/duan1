@@ -10,6 +10,12 @@
 
 
     match ($act) {
-        "" => (new queryControl) -> list()
+        "" => (new queryControl) -> list(),
+        "admin" => (new queryControl) -> list(),
+        "product" => (new queryControl) -> listProduct(),
+        "user" => (new queryControl) -> user(),
+        "danhmuc" => (new queryControl) -> danhmuc(),
+        "binhluan" => (new queryControl) -> binhluan(),
+        "donhang" => (new queryControl) -> donhang()
     }
 ?>

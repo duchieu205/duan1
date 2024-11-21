@@ -1,0 +1,11 @@
+
+  
+ table tbody tr td .fa-pen-to-square, table tbody tr td .fa-trash{
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0 10px;
+  }
+
+  table tbody tr td a:hover {
+    text-decoration: none;
+  }

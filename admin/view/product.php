@@ -9,12 +9,14 @@
     <meta name="author" content="">
 
     <title>Admin</title>
-
+    <link href="css/css.css" rel="stylesheet">
+    
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">  
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -42,7 +44,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="?act=admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Thống Kê</span></a>
@@ -59,7 +61,7 @@
             </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link collapsed" href="?act=product" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -116,6 +118,7 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="">
+
                     <span>Log out</span></a>
             </li>
 
@@ -207,11 +210,31 @@
                 </nav>
                 <!-- End of Topbar -->
 
+                
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                   <!-- content Thống Kê -->
-                   <!-- ghi trong đây -->
-
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>
+                                        <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
                 </div>
                 
 

@@ -42,7 +42,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="?act=admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Thống Kê</span></a>
@@ -59,7 +59,7 @@
             </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link collapsed" href="?act=product" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -101,7 +101,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="?act=binhluan">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Bình luận</span></a>
@@ -116,6 +116,7 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="">
+
                     <span>Log out</span></a>
             </li>
 
