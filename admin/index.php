@@ -12,10 +12,13 @@
     match ($act) {
         "" => (new queryControl) -> list(),
         "admin" => (new queryControl) -> list(),
+        "update" => (new queryControl) -> update($id),
         "product" => (new queryControl) -> listProduct(),
+        "delete" => (new queryControl) -> delete($id),
         "user" => (new queryControl) -> user(),
         "danhmuc" => (new queryControl) -> danhmuc(),
         "binhluan" => (new queryControl) -> binhluan(),
-        "donhang" => (new queryControl) -> donhang()
+        "donhang" => (new queryControl) -> donhang(),
+        "create" => (new queryControl) -> create()
     }
 ?>

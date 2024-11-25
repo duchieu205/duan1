@@ -149,6 +149,7 @@
 
                     <!-- Topbar Search -->
                     <img class="logo" src="../img/1.png" alt="">
+
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
@@ -166,12 +167,27 @@
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <!-- <li class="nav-item dropdown no-arrow d-sm-none">
+                        <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
-                            </a> -->
+                            </a>
                             <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </li>
 
                         
@@ -196,41 +212,21 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                
+                <form class="form" method="POST" enctype="multipart/form-data">
+                    <h1>Cập nhật sản phẩm</h1>
+                    <input name="name" class="input-style" type="text">
+                    <textarea name="mota"></textarea>
+                    <input name="gia" class="input-style" type="textarea">
+                    <input name="soluong" class="input-style" " type="text">
+                    <span>
+                        <label for="anh">Ảnh hiện tại  : </label>
+                        <img id="anh" src="<?= BASE_URL . $result->image ?>" alt="">
+                    </span>
+                    <input name="file_upload" id="file-upload" type="file" />
+                    <button name="btn" class="btnbtn" type="submit">Cập nhật</button>
+                    <span><?php echo isset($thongBao) ? $thongBao : "Cập nhật thất bại" ?></span>
+                </form>
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Tên sản phẩm</th>
-                                    <th scope="col">Đơn giá</th>
-                                    <th scope="col">Số lượng </th>
-                                    <th scope="col">Ảnh</th>
-                                    <th scope="col">Loại</th>
-                                    <th scope="col">Trạng thái</th>
-                                    <th scope="col">Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($result as $rs) :?>
-                                <tr>
-                                    <td><?= $rs->id ?></td>
-                                    <td><?= $rs->name ?></td>
-                                    <td><?= number_format($rs->gia) . " Đ" ?></td>
-                                    <td><?= $rs->soluong ?></td>
-                                    <td><img src="<?= BASE_URL . $rs->image ?>" alt=""></td>
-                                    <td><?= $rs->ma_th ?></td>
-                                    <td><?= $rs->trangthai ?></td>
-                                    <td>
-                                        <a href="?act=update&id=<?= $rs->id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a return onclick="confirm('Bạn có chắc muốn xóa ?')" href="?act=delete&id=<?= $rs->id ?>"><i class="fa-solid fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                </div>
                 
 
             </div>

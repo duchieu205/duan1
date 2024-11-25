@@ -9,6 +9,7 @@
     <meta name="author" content="">
 
     <title>Admin</title>
+    <link href="css/css.css?v=<?php echo time() ?> " rel="stylesheet">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -146,6 +147,8 @@
                     </button>
 
                     <!-- Topbar Search -->
+                <img class="logo" src="../img/1.png" alt="">
+
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
