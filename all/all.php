@@ -5,7 +5,7 @@
     }
 
     class khachhang {
-        public $ma_th;
+        public $ma_kh;
         public $name;
         public $email;
         public $password;

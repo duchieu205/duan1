@@ -4,6 +4,12 @@
     require("../common/function.php");
     require_once("control/queryControl.php");
     require("model/query.php");
+
+    require("model/userQuery.php");
+    require("control/userControl.php");
+
+
+
     
     $act = $_GET['act'] ?? "";
     $id = $_GET['id'] ?? "";
@@ -15,10 +21,14 @@
         "update" => (new queryControl) -> update($id),
         "product" => (new queryControl) -> listProduct(),
         "delete" => (new queryControl) -> delete($id),
-        "user" => (new queryControl) -> user(),
+        "create" => (new queryControl) -> create(),
+
+        "user" => (new userControl) -> user(),
+        "deleteUser" => (new userControl) -> deleteUser($id),
+
+
         "danhmuc" => (new queryControl) -> danhmuc(),
         "binhluan" => (new queryControl) -> binhluan(),
-        "donhang" => (new queryControl) -> donhang(),
-        "create" => (new queryControl) -> create()
+        "donhang" => (new queryControl) -> donhang()
     }
 ?>

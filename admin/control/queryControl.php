@@ -11,7 +11,9 @@
         }
 
         public function list() {
-            include("view/admin.php");
+            $result1 = $this->queryControl->countUser();    
+            $result2 = $this->queryControl->countProduct();    
+            include("view/thongke/admin.php");
         }
 
         public function delete($id) {
@@ -78,12 +80,10 @@
             $list = $this->queryControl->listCategory();
             include("view/create.php");
         }
-        public function user() {
-            include("view/user.php");
-        }
+        
 
         public function danhmuc() {
-            include("view/danhmuc.php");
+            include("view/danhmuc/danhmuc.php");
         }
 
         public function binhluan() {

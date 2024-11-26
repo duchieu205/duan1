@@ -119,7 +119,27 @@
                 $e->getMessage();
             }
         }
+        public function countUser() {
+            try {
+                $sql = "SELECT COUNT(*) as totalUser FROM `khachhang`";
+                $data = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+                return $data;
+            }
+            catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
 
+        public function countProduct() {
+            try {
+                $sql = "SELECT COUNT(*) as totalProduct FROM `sanpham`";
+                $data = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+                return $data;
+            }
+            catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
         
     }
 ?>

@@ -10,13 +10,15 @@
 
     <title>Admin</title>
     <link href="css/css.css?v=<?php echo time() ?> " rel="stylesheet">
+    <link href="css/css1.css?v=<?php echo time() ?> " rel="stylesheet">
+
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+    
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -43,7 +45,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item ">
+            <li class="nav-item active">
                 <a class="nav-link" href="?act=admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Thống Kê</span></a>
@@ -60,7 +62,7 @@
             </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="?act=product" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -69,7 +71,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item ">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="?act=danhmuc" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
@@ -86,7 +88,7 @@
             </div> -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="?act=user" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -117,7 +119,6 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="">
-
                     <span>Log out</span></a>
             </li>
 
@@ -140,6 +141,7 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <img class="logo" src="../img/1.png" alt="">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -147,8 +149,6 @@
                     </button>
 
                     <!-- Topbar Search -->
-                <img class="logo" src="../img/1.png" alt="">
-
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
@@ -212,11 +212,26 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                   <!-- content Thống Kê -->
-                   <!-- ghi trong đây -->
+                <div class="box-content">
+                    <div class="box">
+                        <p>Số lượng user : <?=  $result1['totalUser'] ?></p>
+                   </div>
 
+                   <div class="box">
+                    <p>Số lượng sản phẩm hiện có : <?=  $result2['totalProduct'] ?></p>
+                   </div>
+
+                   <div class="box">
+                        <p>1</p>
+                   </div>
+
+                   <div class="box">
+                        <p>1</p>
+                   </div>
                 </div>
+                   
+
+                
                 
 
             </div>
