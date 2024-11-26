@@ -75,6 +75,27 @@
             }
         }
 
+        public function listUser() {
+            try {
+                $sql = "SELECT * FROM `khachhang`";
+                $data = $this->pdo->query($sql)->fetchAll();
+                $userlist = [];
+                foreach ($data as $ds) {
+                    $user = new khachhang;
+                    $user->ma_kh = $ds['MA_KH'];
+                    $user->name = $ds['NAME'];
+                    $user->email = $ds['EMAIL'];
+                    $user->password = $ds['MATKHAU'];
+                    $user->diachi = $ds['DIACHI'];
+                    $user->sdt = $ds['SDT'];
+                    $userlist[] = $user;
+                }
+                return $userlist;
+            }
+            catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
 
     }
 

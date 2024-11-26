@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['email']) && !isset($_POST['password'])) {
+        header("Location: ../?act=signin");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,7 +126,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="?act=logout">
                     <span>Log out</span></a>
             </li>
 

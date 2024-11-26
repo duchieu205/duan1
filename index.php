@@ -12,6 +12,7 @@
 
     match ($act) {
         "" => (new queryControl) -> list(),
+        "shop" => (new queryControl) -> list(),
         "signin" => (new queryControl) -> signin(),
         "signup" => (new queryControl) -> signup(),
     }

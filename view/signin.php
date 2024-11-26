@@ -19,6 +19,7 @@
         <span><input type="checkbox" id="check"> Show password ?</span>
         </span>
       <span class="span"><a href="#">Forgot password?</a></span>
+      <span class="span1"><?= $tbao ?></span>
       <input name="btn_submit" class="submit" type="submit" value="Sign in" />
       <span class="span">Don't have an account? <a href="?act=signup">Sign up</a></span>
     </form>

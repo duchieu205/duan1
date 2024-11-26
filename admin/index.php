@@ -29,6 +29,8 @@
 
         "danhmuc" => (new queryControl) -> danhmuc(),
         "binhluan" => (new queryControl) -> binhluan(),
-        "donhang" => (new queryControl) -> donhang()
+        "donhang" => (new queryControl) -> donhang(),
+
+        "logout" => (new userControl) -> logout()
     }
 ?>

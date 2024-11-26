@@ -116,7 +116,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="?act=logout">
 
                     <span>Log out</span></a>
             </li>

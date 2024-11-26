@@ -22,11 +22,12 @@
     <input type="password" name="password" id="password"/>
     <span><input type="checkbox" id="check"> Show password ?</span>
     </span>
+  <span class="error"><?= $tbao ?></span>
+
   <span class="span"><a href="#">Forgot password?</a></span>
   <input name="btn_submit" class="submit" type="submit" value="Sign up" />
   <!-- <button name="btn_submit" class="submit" type="submit">Sign up</button> -->
   <span class="span">Do have an account? <a href="?act=signin">Sign in</a></span>
-  <span><?= $tbao ?></span>
 </form>
 
     <script>

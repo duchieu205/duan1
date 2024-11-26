@@ -21,6 +21,13 @@
             exit();
         }
 
+        public function logout() {
+            session_start();
+            session_destroy();
+            session_destroy();
+            header("Location: ../");
+            exit();
+        }
         
     }
     
