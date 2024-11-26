@@ -18,6 +18,7 @@
             $result = $this->queryControl->deleteProduct($id);
             header("Location: ?act=product");
             exit();
+            
         }
 
         public function listProduct() {
@@ -33,7 +34,7 @@
                 $result->mota = $_POST['mota'];
                 $result->gia = $_POST['gia'];
                 $result->soluong = $_POST['soluong'];
-
+                $result->trangthai = $_POST['trangthai'];
                 if (isset($_FILES['file_upload']) && $_FILES['file_upload']['tmp_name'] !== false) {
                     $img = $_FILES['file_upload']['tmp_name'];
                     $location = "../img/" . $_FILES['file_upload']['name'];
@@ -42,7 +43,7 @@
                     }
                 } 
                 $return = $this->queryControl->updateProduct($result);
-                if ($return = "success") {
+                if ($return === "success") {
                     $thongBao = "Cập nhật thành công";
                 }
             }
@@ -50,14 +51,15 @@
         }
 
         public function create() {
-            $result = $this->queryControl->findProduct($id);
+            $result = new sanpham;
             $thongBao = "";
             if (isset($_POST['btn'])) {
                 $result->name = $_POST['name'];
                 $result->mota = $_POST['mota'];
                 $result->gia = $_POST['gia'];
                 $result->soluong = $_POST['soluong'];
-
+                $result->ma_th = $_POST['ma_th'];
+                $result->trangthai = $_POST['trangthai'];
                 if (isset($_FILES['file_upload']) && $_FILES['file_upload']['tmp_name'] !== false) {
                     $img = $_FILES['file_upload']['tmp_name'];
                     $location = "../img/" . $_FILES['file_upload']['name'];
@@ -65,11 +67,15 @@
                         $result->image = "img/" . $_FILES['file_upload']['name'];
                     }
                 } 
-                $return = $this->queryControl->updateProduct($result);
-                if ($return = "success") {
-                    $thongBao = "Cập nhật thành công";
+                $return = $this->queryControl->createProduct($result);
+                if ($return === "success") {
+                    $thongBao = "Thêm mới thành công";
+                }
+                else {
+                    $thongBao = "Thêm mới thất bại";
                 }
             }
+            $list = $this->queryControl->listCategory();
             include("view/create.php");
         }
         public function user() {
@@ -87,5 +93,7 @@
         public function donhang() {
             include("view/donhang.php");
         }
+
+        
     }
 ?>

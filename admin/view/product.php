@@ -199,6 +199,7 @@
                 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                        <a href="?act=create"><button class="button1">Thêm mới</button></a>
                         <table class="table table-striped">
                             <thead>
                                 <tr>

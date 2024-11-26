@@ -11,7 +11,9 @@
     $id = $_GET['id'] ?? "";
 
     match ($act) {
-        "" => (new queryControl) -> list()
+        "" => (new queryControl) -> list(),
+        "signin" => (new queryControl) -> signin(),
+        "signup" => (new queryControl) -> signup(),
     }
     
 ?>

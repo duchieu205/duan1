@@ -222,6 +222,12 @@
                         <label for="anh">Ảnh hiện tại  : </label>
                         <img id="anh" src="<?= BASE_URL . $result->image ?>" alt="">
                     </span>
+                    <span> Trạng thái : 
+                        <select name="trangthai" id="">
+                            <option value="Còn hàng" <?= $result->trangthai == "Còn hàng" ? "selected" : "" ?>>Còn hàng</option>
+                            <option value="Hết hàng" <?= $result->trangthai == "Hết hàng" ? "selected" : "" ?>>Hết hàng</option>
+                        </select>
+                    </span>
                     <input name="file_upload" id="file-upload" type="file" />
                     <button name="btn" class="btnbtn" type="submit">Cập nhật</button>
                     <span><?php echo isset($thongBao) ? $thongBao : "Cập nhật thất bại" ?></span>

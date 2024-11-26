@@ -39,6 +39,43 @@
         }
 
 
+        public function signup(khachhang $kh) {
+            try {
+                $sql = "INSERT INTO `khachhang` (`MA_KH`, `NAME`, `EMAIL`, `MATKHAU`, `DIACHI`, `SDT`) 
+                VALUES (NULL, '$kh->name', '$kh->email', '$kh->password', '', '');";
+                $data = $this->pdo->exec($sql);
+                if ($data === 1) {
+                    return "success";
+                }
+            }
+            catch (Exception $e) {
+                echo "Lỗi đăng ký" . $e->getMessage();
+            }
+        }
+
+        public function chitietProduct($id) {
+            try {
+                $sql = "SELECT * FROM `sanpham` WHERE `MA_SP` = '$id'";
+                $rs = $this->pdo->query($sql)->fetch();
+                    $sanpham = new sanpham;
+                    $sanpham->id = $rs['MA_SP'];
+                    $sanpham->name = $rs['TEN_SP'];
+                    $sanpham->mota = $rs['MOTA_SP'];
+                    $sanpham->gia = $rs['GIA_SP'];
+                    $sanpham->soluong = $rs['SOLUONG_SP'];
+                    $sanpham->image = $rs['ANH_SP'];
+                    $sanpham->ma_th = $rs['MA_THUONGHIEU'];
+                    $sanpham->trangthai = $rs['TRANGTHAI'];
+                    var_dump($sanpham);
+                return $sanpham;
+
+            }
+            catch (Exception $e) {
+                echo "Lỗi đăng ký" . $e->getMessage();
+            }
+        }
+
+
     }
 
 ?>

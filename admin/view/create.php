@@ -213,18 +213,29 @@
                 <!-- End of Topbar -->
 
                 <form class="form" method="POST" enctype="multipart/form-data">
-                    <h1>Cập nhật sản phẩm</h1>
-                    <input name="name" class="input-style" type="text">
-                    <textarea name="mota"></textarea>
-                    <input name="gia" class="input-style" type="textarea">
-                    <input name="soluong" class="input-style" " type="text">
-                    <span>
-                        <label for="anh">Ảnh hiện tại  : </label>
-                        <img id="anh" src="<?= BASE_URL . $result->image ?>" alt="">
+                    <h1>Thêm sản phẩm</h1>
+                    <input placeholder="Tên sản phẩm..." name="name" class="input-style" type="text">
+                    <textarea placeholder="Mô tả sản phẩm..." name="mota"></textarea>
+                    <input placeholder="Giá sản phẩm..." name="gia" class="input-style" type="textarea">
+                    <input placeholder="Số lượng sản phẩm..." name="soluong" class="input-style" " type="text">
+                    <span>Thương hiệu : 
+                        <select name="ma_th" id="">
+                            <option value="">-- Lựa chọn -- </option>
+                            <?php  foreach ($list as $lt) : ?>
+                            <option value="<?= $lt->ma_th ?>"><?= $lt->name ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </span>
+                    <span> Trạng thái : 
+                        <select name="trangthai" id="">
+                            <option value="">--Lựa chọn--</option>
+                            <option value="Còn hàng" <?= $result->trangthai == 1 ? "selected" : "" ?>>Còn hàng</option>
+                            <option value="Hết hàng" <?= $result->trangthai == 2 ? "selected" : "" ?>>Hết hàng</option>
+                        </select>
                     </span>
                     <input name="file_upload" id="file-upload" type="file" />
-                    <button name="btn" class="btnbtn" type="submit">Cập nhật</button>
-                    <span><?php echo isset($thongBao) ? $thongBao : "Cập nhật thất bại" ?></span>
+                    <button name="btn" class="btnbtn" type="submit">Thêm mới</button>
+                    <span class="span1"><?= $thongBao ?></span>
                 </form>
                 <!-- Begin Page Content -->
                 

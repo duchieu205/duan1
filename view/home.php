@@ -21,6 +21,8 @@
                 <li><a href="#">Xiaomi</a></li>
             </ul>
         </nav>
+        <a href="?act=signup">Sign Up</a>
+        <a href="?act=signin">Sign In</a>
         <div class="search-bar">
             <input type="text" placeholder="Tìm kiếm sản phẩm...">
             <button>Tìm</button>
@@ -40,8 +42,8 @@
         <div class="product-list">
             <?php foreach ($result as $rs) { ?>
                     <div class="product-item">
-                        <img src="<?= BASE_URL . $rs->image ?>" alt="<?=$rs->name; ?>">
-                        <h3><?= $rs->name ?></h3>
+                        <img src="<?= BASE_URL . $rs->image ?>" >
+                        <a href=""><?= $rs->name ?></a>
                         <p>Giá: <?= number_format($rs->gia); ?> đ</p>
                         <button>Thêm vào giỏ</button>
                     </div>
