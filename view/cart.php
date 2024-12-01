@@ -1,6 +1,7 @@
 <?php
    
     if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
+
         header("Location: ?act=signin");
         exit();
     }
@@ -62,23 +63,67 @@
                         <td><img src="<?= BASE_URL . $rs['ANH_SP'] ?>" alt=""></td>
                         <td><?= $rs['TEN_SP'] ?></td>
                         <td><?= number_format($rs['GIA_SP']) . " Đ" ?></td>
-                        <td><?= 1 ?></td>
-                        <td><?= number_format($rs['GIA_SP'] * 1) . " Đ" ?></td>
-                        <td><button class="btn btn-danger btn-sm">Xóa</button></td>
+                        <td><?= $rs['SOLUONG'] ?></td>
+                        <td><strong><?= number_format($rs['total_price']) . " Đ" ?></strong></td>
+                        <td><a return onclick="confirm('Bạn có chắc muốn xóa')" href="?act=deleteCart&id=<?= $rs['MA_GIOHANGITEM'] ?>"><button class="btn btn-danger btn-sm">Xóa</button></a></td>
                      </tr>
                      
                 <?php endforeach; ?>    
                 </tbody>
             </table>
+            <div class="col-lg-4">
+                <?php
+                    $tong = 0;
+                    foreach($result as $rs) :
+                        $tong += $rs['total_price'];
+                ?>
+                <?php endforeach;  ?>
+             
+                <p><strong>Tổng tiền tạm tính : <span id="cart-total"><?= number_format($tong) . " Đ" ?></span> </strong> </p>
+                <label class="mb-3" for=""><input checked type="radio">Thanh toán khi nhận hàng</label>
+                <p><strong>Phí ship COD : 30.000 Đ</strong></p>
+                <h3 class="text-success mb-3">Tổng đơn hàng : <?= number_format($tong + 30000) . " Đ" ?></h3>
+                <a href="?act=shop" class="btn btn-outline-success">Mua thêm</a>
+                <a href="?act=checkout" class="btn btn-success">Đặt hàng</a>
+            </div>
+
+            
         </div>
-        <div class="col-lg-4">
-            <h3 class="text-success mb-3">Tổng tiền</h3>
-            <p><strong>Tổng : </strong> <span id="cart-total">100.000 Đ</span></p>
-            <a href="?act=shop" class="btn btn-outline-success">Thêm Đơn Hàng</a>
-            <a href="?act=checkout" class="btn btn-success">Mua</a>
+
+
+        <!-- form đặt hàng -->
+        <form method="POST" class="form col-lg-4">
+                    <?php
+                        if (is_array($user)) {
+                    // foreach($user as $us): ?>
+                    <span class="input-span">
+                        <label for="email" class="label">Email</label>
+                        <input value="<?= htmlspecialchars($user['EMAIL']) ?>" type="email" name="email" id="email"
+                    /></span>
+                    <span class="input-span">
+                        <label for="password" class="label">Họ tên</label>
+                        <input value="<?= $user['NAME'] ?>" type="text" name="name" id="password"
+                    /></span>
+
+                    <span class="input-span">
+                        <label for="password" class="label">Số điện thoại</label>
+                        <input value="<?= $user['SDT'] ?>" type="tel" name="password" id="password"
+                    /></span>
+
+                    <span class="input-span">
+                        <label for="password" class="label">Địa chỉ</label>
+                        <input value="<?= $user['DIACHI'] ?>" type="text" name="password" id="password"
+                    /></span>
+                        <!-- <?php  }?> -->
+
+                    <input class="submit" type="submit" value="Đặt hàng" />
+   
+            </form>
+       
         </div>
+
+                
     </div>
-</div>
 
 
 </body>

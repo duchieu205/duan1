@@ -17,7 +17,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Trang chủ</a></li>
+                <li><a href="?act=shop">Trang chủ</a></li>
                 <li><a href="index.php?act=thuonghieu&thuonghieu=iPhone">iPhone</a></li>
                 <li><a href="index.php?act=thuonghieu&thuonghieu=Oppo">Oppo</a></li>
                 <li><a href="index.php?act=thuonghieu&thuonghieu=Samsung">Samsung</a></li>
@@ -51,6 +51,7 @@
                             <p>Giá: <span><strong><?= number_format($rs->gia) . " Đ" ?></strong></span></p>
                             <form method="POST" action="?act=cart">
                                     <input type="hidden" name="ma_sanpham" value="<?= $rs->ma_sp ?>">
+                                    <input name="quantity" id="quantity" type="hidden" min="1" value="1"> 
                                     <button type="submit">Thêm vào giỏ hàng</button>
                                 </form>
    

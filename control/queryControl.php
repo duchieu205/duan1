@@ -98,7 +98,6 @@
 
         public function detail($id) {
             $result = $this->queryControl->chitietProduct($id);
-      
             include("view/chitietsanpham.php");
         }
 

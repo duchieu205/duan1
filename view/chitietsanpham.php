@@ -27,10 +27,18 @@
             </ul>
         </nav>
         <div class="search-cart">   
-            <a href="?act=signup">Sign Up</a>
-            <a href="?act=signin">Sign In</a>
+            <?php if(isset($_SESSION['email'])) { ?>
+                <span>Xin chào</span>
+       
+            <?php } else { ?>
+                <a href="?act=signup">Sign Up</a>
+                <a href="?act=signin">Sign In</a>
+            <?php }?>
             <input type="text" placeholder="Tìm kiếm...">
-            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="?act=cart"><i class="fas fa-shopping-cart"></i></a>
+            <?php if(isset($_SESSION['email'])) {?>
+                <a href="?act=logout">Đăng xuất</a>
+            <?php } ?>
         </div>
     </header>
 
@@ -52,7 +60,12 @@
                 </div>
             
                 <div class="confirm">
-                    <a href="?act=cart&add<?= $rs->ma_sp ?>"><button class="dathang" name="mua_sp">Thêm vào giỏ hàng</button></a>                    
+                                <form method="POST" action="?act=cart">
+                                    <input type="hidden" name="ma_sanpham" value="<?= $rs->ma_sp ?>">
+                                    <label for="quantity">Số lượng muốn mua : </label>
+                                    <input name="quantity" id="quantity" type="number" min="1" max="<?= $rs->soluong ?>" value="1"> <br> <br>   
+                                    <button name="btn_submit" type="submit">Thêm vào giỏ hàng</button>
+                                </form>                 
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -65,7 +78,7 @@
         <!-- Bình luận sản phẩm -->
         <section class="product-comments">
             <h2>Bình luận</h2>
-            <form action="index.php?act=binhluan&id=<?php echo $ma_sp; ?>" method="post">
+            <form action="?act=binhluan&id=<?php echo $ma_sp; ?>" method="post">
                 <textarea name="comment" rows="4" placeholder="Viết bình luận của bạn..."></textarea>
                 <button type="submit" class="btn btn-secondary">Gửi bình luận</button>
             </form>
@@ -78,5 +91,16 @@
             <p>© 2024 Trang Bán Hàng. All rights reserved.</p>
         </div>
     </footer>
+
+
+    <script>
+        const input = document.getElementById('quantity');
+        const max = <?= $rs->soluong ?>;
+        input.addEventListener('input', () => {
+            if (input.value < 1 || input.value > max) {
+                input.value = Math.min(Math.max(input.value, 1), max);
+            } 
+        });
+</script>
 </body>
 </html>

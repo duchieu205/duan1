@@ -6,6 +6,8 @@
     require("model/query.php");
     require("control/cartControl.php");
     require("model/cartQuery.php");
+    require("model/userQuery.php");
+
     // require("")
 
 
@@ -21,8 +23,8 @@
         "signup" => (new queryControl) -> signup(),
         "detail" => (new queryControl) -> detail($id),
         "logout" => (new queryControl) -> logout(),
-        "cart" => (new cartControl) -> cart()
-    
+        "cart" => (new cartControl) -> cart(),
+        "deleteCart" => (new cartControl) -> deleteCart($id)
     }
     
 ?>
