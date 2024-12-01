@@ -20,6 +20,7 @@
                 $array_product = [];
                 foreach($result as $rs) {
                     $sanpham = new sanpham;
+                    $sanpham->ma_sp = $rs['MA_SP'];
                     $sanpham->name = $rs['TEN_SP'];
                     $sanpham->mota = $rs['MOTA_SP'];
                     $sanpham->gia = $rs['GIA_SP'];
@@ -55,10 +56,11 @@
 
         public function chitietProduct($id) {
             try {
-                $sql = "SELECT * FROM `sanpham` WHERE `MA_SP` = '$id'";
+                $sql = "SELECT * FROM `sanpham` WHERE `MA_SP` = $id";
                 $rs = $this->pdo->query($sql)->fetch();
+                $result = [];
                     $sanpham = new sanpham;
-                    $sanpham->id = $rs['MA_SP'];
+                    $sanpham->ma_sp= $rs['MA_SP'];
                     $sanpham->name = $rs['TEN_SP'];
                     $sanpham->mota = $rs['MOTA_SP'];
                     $sanpham->gia = $rs['GIA_SP'];
@@ -66,8 +68,8 @@
                     $sanpham->image = $rs['ANH_SP'];
                     $sanpham->ma_th = $rs['MA_THUONGHIEU'];
                     $sanpham->trangthai = $rs['TRANGTHAI'];
-                    var_dump($sanpham);
-                return $sanpham;
+                    $result[] = $sanpham;
+                return $result;
 
             }
             catch (Exception $e) {

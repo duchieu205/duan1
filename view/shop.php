@@ -26,11 +26,10 @@
             </ul>
         </nav>
         <div class="search-cart">
-            <a href="?act=signup">Sign Up</a>
-            <a href="?act=signin">Sign In</a>
+            Xin chào
             <input type="text" placeholder="Tìm kiếm...">
             <a href="?act=cart"><i class="fas fa-shopping-cart"></i></a>
-            
+            <a href="?act=logout">Đăng xuất</a>
         </div>
     </header>
 
@@ -50,7 +49,11 @@
                                 <a href="?act=detail&id=<?= $rs->ma_sp ?>"><?= $rs->name ?></a>
                             </h3>
                             <p>Giá: <span><strong><?= number_format($rs->gia) . " Đ" ?></strong></span></p>
-                            <a href="?act=cart"><button class="dathang" name="mua_sp">Thêm vào giỏ hàng</button></a>
+                            <form method="POST" action="?act=cart">
+                                    <input type="hidden" name="ma_sanpham" value="<?= $rs->ma_sp ?>">
+                                    <button type="submit">Thêm vào giỏ hàng</button>
+                                </form>
+   
                         </div>
             <?php endforeach; ?>
         </div>

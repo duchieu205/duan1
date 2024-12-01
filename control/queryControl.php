@@ -1,7 +1,8 @@
 <?php
+        session_start();
+
     class queryControl {
         public $queryControl;
-
         public function __construct() {
             $this->queryControl = new Query;
         }
@@ -9,9 +10,14 @@
             $this->queryControl = NULL;
         }
 
-        public function list() {
+        public function home() {
             $result = $this->queryControl->listProduct();
             include("view/home.php");
+        }
+
+        public function list() {
+            $result = $this->queryControl->listProduct();
+            include("view/shop.php");
         }
 
         public function signup() {
@@ -70,7 +76,7 @@
                     $user = false;
                     foreach($result as $rs) {
                         if ($_POST['email'] == $rs->email && $_POST['password'] == $rs->password) {
-                            session_start();
+                            $_SESSION['ma_kh'] = $rs->ma_kh;
                             $_SESSION['email'] = $_POST['email'];
                             $_SESSION['password'] = $_POST['password'];
                             header("Location: ?act=shop");
@@ -84,10 +90,24 @@
             }
             include("view/signin.php");
         }
-        public function chitiet($id) {
-            $list = $this->queryControl->chitietProduct($id);
-            var_dump($list);
-            include("view/chitietsp.php");
+        // public function chitiet($id) {
+        //     $list = $this->queryControl->chitietProduct($id);
+        //     var_dump($list);
+        //     include("view/chitietsp.php");
+        // }
+
+        public function detail($id) {
+            $result = $this->queryControl->chitietProduct($id);
+      
+            include("view/chitietsanpham.php");
+        }
+
+        public function logout() {
+            session_start();
+            session_destroy();
+            session_destroy();
+            header("Location: ?act=home");
+            exit();
         }
     }
 ?>
