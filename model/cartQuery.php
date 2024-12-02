@@ -33,6 +33,7 @@
 
             }
             catch (Exception $e) {
+                echo "Lỗi thêm " . $e->getMessage();
                 return $e->getMessage();
             }
         }
@@ -50,6 +51,37 @@
             }
         }
 
+        public function createCart($ma_kh) {
+            try {
+                $sql = "INSERT INTO `giohang_item` (MA_KH) VALUES (:ma_kh);";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
+                return $stmt->execute();
+
+            }
+            catch (Exception $e) {
+                echo $e->getMessage();
+                return NULL;
+            }
+        }
+
+        public function getMaKHCart($ma_kh) {
+            try {
+                $sql = "SELECT MA_KH FROM `giohang_item` WHERE `MA_KH` = $ma_kh LIMIT 1";
+                $result = $this->db->query($sql)->fetch();
+
+                return $result ?: NULL;                
+            }
+
+            catch (Exception $e) {
+                echo $e->getMessage();
+                return $e->getMessage();
+            }
+            
+        }
+
+
+        // update số lượng mỗi khi thêm sản phẩm vào giỏ hàng
         public function updateSoLuong($ma_kh, $ma_sp, $newSoLuong) {
             try {
                 $sql = "UPDATE giohang_item SET SOLUONG = ? WHERE ma_kh = ? AND ma_sp = ?";
@@ -62,6 +94,8 @@
             }
         }
 
+
+        // xóa sản phẩm khỏi giỏ hàng
         public function deleteCart($id) {
             try {
                 $sql = "DELETE FROM giohang_item WHERE `MA_GIOHANGITEM` = $id";

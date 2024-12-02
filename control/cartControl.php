@@ -9,7 +9,7 @@
             $this->cartControl = new CartQuery;
             $this->queryControl = new Query;
             $this->userControl = new userQuery;
-
+            
 
         }
        
@@ -20,16 +20,27 @@
     
         public function cart() {
             // echo $_SESSION['ma_kh']; // id khách hàng
-            $ma_kh = $_SESSION['ma_kh'];
+            $ma_kh = $_SESSION['ma_kh'] ?? NULL;
+
+            
             $result1 = [];
             $result = $this->cartControl->mycart(); 
             $user = $this->userControl->getUser($ma_kh);
-            var_dump($user);
+
+
+            $myCart = $this->cartControl->getMaKHCart($ma_kh); // check mã khách hàng tồn tại
+            var_dump($myCart);
+            if (!$myCart) {
+                $this->cartControl->createCart($ma_kh);
+                $myCart = $this->cartControl->getMaKHCart($ma_kh);
+            }
+
+
             if (isset($_POST['btn_submit']) && isset($_POST['ma_sanpham'])) {
                 $ma_sp = $this->queryControl->chitietProduct($_POST['ma_sanpham']);    // lấy sản phẩm từ db
                 $soluong = (int)$_POST['quantity']; // lấy số lượng từ form
                 $ma_kh = $_SESSION['ma_kh']; // lấy mã khách hàng
-                $ma_donhang = $result; 
+                // $ma_donhang = $result; 
 
                 $product = $this->cartControl->checkCart($ma_kh, $ma_sp[0]->ma_sp);
 
@@ -48,7 +59,7 @@
                         echo "<script>alert('Số lượng muốn mua vượt quá số lượng trong kho!');</script>";
                         $soluong = $checkSoLuong;
                     }
-                    $result1[] = $this->cartControl->addCart($ma_sp[0]->ma_sp, $ma_kh, $ma_donhang, $soluong); 
+                    $result1[] = $this->cartControl->addCart($ma_sp[0]->ma_sp, $ma_kh, 1, $soluong); 
                 }// thêm vào giỏ hàng
                 
                 $result = $this->cartControl->mycart(); 

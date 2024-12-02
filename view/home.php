@@ -24,11 +24,11 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=iPhone">iPhone</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Oppo">Oppo</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Samsung">Samsung</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Xiaomi">Xiaomi</a></li>
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">iPhone</a></li>
+                <li><a href="#">Oppo</a></li>
+                <li><a href="#">Samsung</a></li>
+                <li><a href="#">Xiaomi</a></li>
                 
             </ul>
         </nav>
@@ -65,7 +65,7 @@
 
 
     <!-- Sản phẩm nổi bật -->
-    <section class="featured-products">
+    <!-- <section class="featured-products">
     <h2>Sản phẩm nổi bật</h2>
     <div class="product-grid">
         <?php  ?>
@@ -78,7 +78,7 @@
                         <a href="?act=detail&id=" class="btn">MUA NGAY</a>
                 </div>;
     </div>
-</section>
+</section> -->
 
 
     <!-- Footer -->

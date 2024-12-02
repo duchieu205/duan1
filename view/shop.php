@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +20,10 @@
         <nav>
             <ul>
                 <li><a href="?act=shop">Trang chủ</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=iPhone">iPhone</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Oppo">Oppo</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Samsung">Samsung</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Xiaomi">Xiaomi</a></li>
+                <li><a href="#">iPhone</a></li>
+                <li><a href="#">Oppo</a></li>
+                <li><a href="#">Samsung</a></li>
+                <li><a href="#">Xiaomi</a></li>
                 
             </ul>
         </nav>
@@ -62,20 +64,7 @@
 
 
     <!-- Sản phẩm nổi bật -->
-    <section class="featured-products">
-    <h2>Sản phẩm nổi bật</h2>
-    <div class="product-grid">
-        <?php  ?>
-              <div class="product-card">
-                        <img src="img/2.webp" alt="Sản phẩm">
-                        <h3>
-                            <a href="?act=detail&id=">Điện thoại iPhone 14 Pro</a>
-                        </h3>
-                        <p>Giá: <span>20,000,000đ</span></p>
-                        <a href="?act=detail&id=" class="btn">MUA NGAY</a>
-                </div>;
-    </div>
-</section>
+    
 
 
     <!-- Footer -->

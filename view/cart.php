@@ -1,10 +1,11 @@
 <?php
    
     if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
-
         header("Location: ?act=signin");
         exit();
     }
+
+    
 
 ?>
 <!DOCTYPE html>
@@ -78,18 +79,24 @@
                         $tong += $rs['total_price'];
                 ?>
                 <?php endforeach;  ?>
-             
-                <p><strong>Tổng tiền tạm tính : <span id="cart-total"><?= number_format($tong) . " Đ" ?></span> </strong> </p>
+                <?php if(!isset($result)) { 
+                         echo "Trống"; 
+                 } 
+                else { ?>
+                    <p><strong>Tổng tiền tạm tính : <span id="cart-total"><?= number_format($tong) . " Đ" ?></span> </strong> </p>
                 <label class="mb-3" for=""><input checked type="radio">Thanh toán khi nhận hàng</label>
                 <p><strong>Phí ship COD : 30.000 Đ</strong></p>
                 <h3 class="text-success mb-3">Tổng đơn hàng : <?= number_format($tong + 30000) . " Đ" ?></h3>
+                <?php }
+                ?>
                 <a href="?act=shop" class="btn btn-outline-success">Mua thêm</a>
-                <a href="?act=checkout" class="btn btn-success">Đặt hàng</a>
+
             </div>
 
-            
+        <a href="?act=create"><button class="button1">Đơn hàng của tôi</button></a>
+                        
         </div>
-
+                        
 
         <!-- form đặt hàng -->
         <form method="POST" class="form col-lg-4">

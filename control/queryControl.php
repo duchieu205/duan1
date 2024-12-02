@@ -3,8 +3,10 @@
 
     class queryControl {
         public $queryControl;
+        public $cartControl;
         public function __construct() {
             $this->queryControl = new Query;
+            $this->cartControl = new cartQuery;
         }
         public function __destruct() {
             $this->queryControl = NULL;
@@ -35,6 +37,7 @@
                 }
                 if (trim($_POST['name']) !== "" || trim($_POST['email']) !== "" || trim($_POST['password']) !== "") {
                     $user = $this->queryControl->listUser();
+                    
                     $email = false;
                     foreach ($user as $us) {
                         if ($us->email == $_POST['email']) {
@@ -79,6 +82,7 @@
                             $_SESSION['ma_kh'] = $rs->ma_kh;
                             $_SESSION['email'] = $_POST['email'];
                             $_SESSION['password'] = $_POST['password'];
+                            
                             header("Location: ?act=shop");
                             exit();
                         }
