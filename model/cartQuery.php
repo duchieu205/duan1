@@ -8,7 +8,7 @@
         public function mycart() {
             try {
                 $ma_kh = $_SESSION['ma_kh'];
-                $sql = "SELECT gh.MA_GIOHANGITEM, gh.SOLUONG, gh.MA_GIOHANGITEM, sp.TEN_SP, sp.GIA_SP, sp.ANH_SP, gh.MA_DONHANG, gh.SOLUONG * sp.GIA_SP as total_price 
+                $sql = "SELECT gh.MA_GIOHANGITEM, gh.SOLUONG , sp.TEN_SP, sp.GIA_SP, sp.ANH_SP, gh.MA_DONHANG, gh.SOLUONG * sp.GIA_SP as total_price 
                 FROM `giohang_item` gh  join `sanpham` sp on gh.MA_SP = sp.MA_SP WHERE `MA_KH` = $ma_kh";
                 $result = $this->db->query($sql)->fetchAll();
                 return $result;
@@ -38,18 +38,6 @@
             }
         }
 
-        public function checkCart($ma_kh, $ma_sp) {
-            // SQL hoặc logic lấy thông tin sản phẩm trong giỏ hàng
-            try {
-            $sql = "SELECT * FROM giohang_item WHERE ma_kh = ? AND ma_sp = ?";
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute([$ma_kh, $ma_sp]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-            }
-            catch (Exception $e) {
-                return $e->getMessage();
-            }
-        }
 
         public function createCart($ma_kh) {
             try {
