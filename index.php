@@ -7,6 +7,8 @@
     require("control/cartControl.php");
     require("model/cartQuery.php");
     require("model/userQuery.php");
+    require("model/donhangQuery.php");
+    require("control/donhangControl.php");
 
     // require("")
 
@@ -24,7 +26,8 @@
         "detail" => (new queryControl) -> detail($id),
         "logout" => (new queryControl) -> logout(),
         "cart" => (new cartControl) -> cart(),
-        "deleteCart" => (new cartControl) -> deleteCart($id)
+        "deleteCart" => (new cartControl) -> deleteCart($id),
+        "donhang" => (new donhangControl) -> list()
     }
     
 ?>

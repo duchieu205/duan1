@@ -38,6 +38,18 @@
             }
         }
 
+        public function checkCart($ma_kh, $ma_sp) {
+            // SQL hoặc logic lấy thông tin sản phẩm trong giỏ hàng
+            try {
+            $sql = "SELECT * FROM giohang_item WHERE ma_kh = ? AND ma_sp = ?";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([$ma_kh, $ma_sp]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+            catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
 
         public function createCart($ma_kh) {
             try {

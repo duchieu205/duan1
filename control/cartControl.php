@@ -10,7 +10,6 @@
             $this->queryControl = new Query;
             $this->userControl = new userQuery;
             
-
         }
        
         public function __destruct() {
@@ -29,7 +28,7 @@
 
 
             $myCart = $this->cartControl->getMaKHCart($ma_kh); // check mã khách hàng tồn tại
-            var_dump($myCart);
+
             if (!$myCart) {
                 $this->cartControl->createCart($ma_kh);
                 $myCart = $this->cartControl->getMaKHCart($ma_kh);

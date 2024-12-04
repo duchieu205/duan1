@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đơn hàng</title>
+    <title>Giỏ hàng</title>
     <link rel="stylesheet" href="css/ctsp.css?v=<?php echo time() ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -79,8 +79,8 @@
                         $tong += $rs['total_price'];
                 ?>
                 <?php endforeach;  ?>
-                <?php if(!isset($result)) { 
-                         echo "Trống"; 
+                <?php if(!$result){ 
+                         echo "Giỏ hàng trống"; 
                  } 
                 else { ?>
                     <p><strong>Tổng tiền tạm tính : <span id="cart-total"><?= number_format($tong) . " Đ" ?></span> </strong> </p>
@@ -88,12 +88,12 @@
                 <p><strong>Phí ship COD : 30.000 Đ</strong></p>
                 <h3 class="text-success mb-3">Tổng đơn hàng : <?= number_format($tong + 30000) . " Đ" ?></h3>
                 <?php }
-                ?>
+                ?>  <br>
                 <a href="?act=shop" class="btn btn-outline-success">Mua thêm</a>
 
             </div>
 
-        <a href="?act=create"><button class="button1">Đơn hàng của tôi</button></a>
+        <a href="?act=donhang"><button class="button1">Đơn hàng của tôi</button></a>
                         
         </div>
                         
