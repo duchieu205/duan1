@@ -8,7 +8,7 @@
         public function mycart() {
             try {
                 $ma_kh = $_SESSION['ma_kh'];
-                $sql = "SELECT gh.MA_GIOHANGITEM, gh.SOLUONG , sp.TEN_SP, sp.GIA_SP, sp.ANH_SP, gh.MA_DONHANG, gh.SOLUONG * sp.GIA_SP as total_price 
+                $sql = "SELECT sp.MA_SP, gh.MA_GIOHANGITEM, gh.SOLUONG , sp.TEN_SP, sp.GIA_SP, sp.ANH_SP, gh.SOLUONG * sp.GIA_SP as total_price 
                 FROM `giohang_item` gh  join `sanpham` sp on gh.MA_SP = sp.MA_SP WHERE `MA_KH` = $ma_kh";
                 $result = $this->db->query($sql)->fetchAll();
                 return $result;
@@ -18,22 +18,21 @@
             }
         }
 
-        public function addCart($ma_sp, $ma_kh, $ma_donhang, $soluong) {
+        public function addCart($ma_sp, $ma_kh, $soluong) {
             try {
-                $sql = "INSERT INTO giohang_item (MA_SP, MA_KH, MA_DONHANG, SOLUONG) VALUES (:ma_sp, :ma_kh, :ma_donhang, :soluong)";
+                $sql = "INSERT INTO giohang_item (MA_SP, MA_KH, SOLUONG) VALUES (:ma_sp, :ma_kh, :soluong)";
                 $stmt = $this->db->prepare($sql);
                 
                 // Gán giá trị cho các tham số
                 $stmt->bindParam(':ma_sp', $ma_sp, PDO::PARAM_INT);
                 $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
-                $stmt->bindParam(':ma_donhang', $ma_donhang, PDO::PARAM_INT);
                 $stmt->bindParam(':soluong', $soluong, PDO::PARAM_INT);
                 // Thực thi câu lệnh
                 $stmt->execute();
 
             }
             catch (Exception $e) {
-                echo "Lỗi thêm " . $e->getMessage();
+                echo "Lỗi thêm sản phẩm vào giỏ hàng" . $e->getMessage();
                 return $e->getMessage();
             }
         }
@@ -69,7 +68,6 @@
             try {
                 $sql = "SELECT MA_KH FROM `giohang_item` WHERE `MA_KH` = $ma_kh LIMIT 1";
                 $result = $this->db->query($sql)->fetch();
-
                 return $result ?: NULL;                
             }
 
@@ -103,6 +101,16 @@
                 return $data;
             }
 
+            catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+        public function deleteAllCart($ma_kh) {
+            try {
+                $sql = "DELETE FROM giohang_item WHERE `MA_KH` = $ma_kh";
+                return $this->db->exec($sql);
+            }
             catch (Exception $e) {
                 return $e->getMessage();
             }

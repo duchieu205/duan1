@@ -4,12 +4,14 @@
         public $cartControl;
         public $queryControl;
         public $userControl;
+        public $donhangControl;
+
 
         public function __construct() {
             $this->cartControl = new CartQuery;
             $this->queryControl = new Query;
             $this->userControl = new userQuery;
-            
+            $this->donhangControl = new donhangQuery;
         }
        
         public function __destruct() {
@@ -20,14 +22,10 @@
         public function cart() {
             // echo $_SESSION['ma_kh']; // id khách hàng
             $ma_kh = $_SESSION['ma_kh'] ?? NULL;
-
-            
             $result1 = [];
             $result = $this->cartControl->mycart(); 
-            $user = $this->userControl->getUser($ma_kh);
-
-
-            $myCart = $this->cartControl->getMaKHCart($ma_kh); // check mã khách hàng tồn tại
+     
+            $myCart = $this->cartControl->getMaKHCart($ma_kh); // check mã khách hàng tồn tại trong giohang
 
             if (!$myCart) {
                 $this->cartControl->createCart($ma_kh);
@@ -58,11 +56,16 @@
                         echo "<script>alert('Số lượng muốn mua vượt quá số lượng trong kho!');</script>";
                         $soluong = $checkSoLuong;
                     }
-                    $result1[] = $this->cartControl->addCart($ma_sp[0]->ma_sp, $ma_kh, 1, $soluong); 
-                }// thêm vào giỏ hàng
+                 
+                    $result1[] = $this->cartControl->addCart($ma_sp[0]->ma_sp, $ma_kh, $soluong);  // thêm vào giỏ hàng
+                }
                 
                 $result = $this->cartControl->mycart(); 
             }
+        
+            // submit đặt hàng
+            
+            $user = $this->userControl->getUser($ma_kh); // hàm lấy thông tin user
             include("view/cart.php");
         }
         

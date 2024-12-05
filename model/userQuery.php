@@ -21,15 +21,16 @@
             }
         }
 
-        // public function updateUser($id) {
-        //     try {
-        //         $sql = "UPDATE `khachhang` SET (NAME, EMAIL, DIACHI, SDT)
-        //         VALUES ('')"
-        //     }
-
-        //     catch (Exception $e) {
-        //         return $e->getMessage();
-        //     }
-        // }
+        public function updateUser($name, $email, $diachi, $sdt, $ma_kh) {
+            try {
+                $sql = "UPDATE `khachhang` SET `NAME` = '$name', `EMAIL` = '$email', `DIACHI` = '$diachi', `SDT` = '$sdt'
+                WHERE `MA_KH` = $ma_kh;";
+                $data = $this->db->exec($sql);
+                return $data;
+            }
+            catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
     }
 ?>

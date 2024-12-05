@@ -51,7 +51,7 @@
                         <th>ID</th>
                         <th>Tổng tiền</th>
                         <th>Ngày đặt hàng</th>
-                        <th>Phương thức thanh toán</th>
+                        <th>Địa chỉ</th>
                         <th>Trạng thái</th>
                         <th>Ghi chú</th>
                         <th>Thao Tác</th>
@@ -59,21 +59,26 @@
                 </thead>
 
                 <tbody id="cart-items">
+                    <?php
+                    if (is_array($result)) { 
+                            foreach ($result as $rs) :?>  
                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?= $rs['MA_DONHANG'] ?></td>
+                        <td><?= number_format($rs['TONGTIEN']) . " Đ" ?></td>
+                        <td><?= $rs['NGAYHOANTHANH'] ?></td>
+                        <td><?= $rs['DIACHI'] ?></td>
+                        <td><?= $rs['TRANGTHAI'] ?></td>
+                        <td><?= $rs['GHICHU'] ?></td>
                         <td>
-                            <a return onclick="confirm('Bạn có chắc muốn hủy ?')" ><button  class="btn btn-danger btn-sm">Hủy</button></a>
+                            <a  return onclick="confirm('Bạn có chắc muốn hủy ?')" ><button  class="btn btn-danger btn-sm">Hủy</button></a>
                             <button class="btn btn-success" popovertarget="my-popover">Trả hàng/ Hoàn tiền</button>
+                            <a href="?act=chitietdonhang&id=<?= $rs['MA_DONHANG'] ?>"><button class="btn btn-success">Chi tiết đơn hàng</button></a>
                         </td>
                      </tr>
+                   <?php endforeach; }?>
                 </tbody>
             </table>
-            
+            <a href="?act=cart"><button class="btn btn-secondary">Quay lại giỏ hàng</button></a>
 
       
                         

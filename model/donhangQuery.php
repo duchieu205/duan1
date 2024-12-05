@@ -10,6 +10,123 @@
             $this->db = NULL;
         }
 
+        // public function createDonhang($ma_kh) {
+        //     try {
+        //         $sql = "INSERT INTO donhang (MA_KH)
+        //                 VALUES (:ma_kh)";
+        //         $stmt = $this->db->prepare($sql);
+        //         $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
+        //         $stmt->execute();
+                
+        //         $ma_donhang = $this->db->lastInsertId();
+
+        //         return $ma_donhang;
+
+        
+        //     } catch (Exception $e) {
+        //         echo "Lỗi tạo đơn hàng: " . $e->getMessage();
+        //         return $e->getMessage();
+        //     }
+        // }
+
+        public function addDonhang($ma_kh, $dia_chi, $tong_tien) {
+            try {
+                $sql = "INSERT INTO donhang (MA_KH, NGAYHOANTHANH, DIACHI, TONGTIEN, TRANGTHAI, GHICHU)
+                        VALUES (:ma_kh, NOW(), :dia_chi, :tong_tien, 'Chờ xử lý', NULL)";
+                $stmt = $this->db->prepare($sql);
+        
+                $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
+                $stmt->bindParam(':tong_tien', $tong_tien, PDO::PARAM_INT);
+                $stmt->bindParam(':dia_chi', $dia_chi, PDO::PARAM_STR);
+                return $stmt->execute();
+        
+            
+            } 
+            catch (Exception $e) {
+                echo "Lỗi tạo đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function addDonHangChiTiet($ma_donhang, $ma_sp, $soluong, $gia_sp) {
+            try {
+                $sql = "INSERT INTO `donhang_chitiet` (MA_DONHANG, MA_SP, THANHTOAN, SOLUONG, GIA_SP)
+                VALUES (:ma_donhang, :ma_sp, 'Ship COD', :soluong, :gia_sp)";
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute([
+                    ':ma_donhang' => $ma_donhang,
+                    ':ma_sp' => $ma_sp,
+                    ':soluong' => $soluong,
+                    ':gia_sp' => $gia_sp
+                ]);
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng chi tiết: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+
+        public function getMA_KHACHHANG($ma_kh) {
+            try {
+                // Kiểm tra xem MA_KH đã có đơn hàng chưa
+                $sql = "SELECT MA_DONHANG FROM donhang WHERE MA_KH = :ma_kh ORDER BY MA_DONHANG DESC LIMIT 1";;
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
+                $stmt->execute();
+        
+                // Nếu tìm thấy đơn hàng, trả về MA_DONHANG
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $result['MA_DONHANG'] ?? NULL;
+        
+            } catch (Exception $e) {
+                echo "Lỗi kiểm tra và tạo đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+
+        public function getDonHangChiTiet() {
+            try {
+                $sql = "SELECT sp.TEN_SP, sp.ANH_SP,  dh_chitiet.MA_DONHANG, dh_chitiet.MA_SP, dh_chitiet.THANHTOAN, dh_chitiet.SOLUONG, dh_chitiet.GIA_SP, dh_chitiet.SOLUONG * dh_chitiet.GIA_SP as total_price
+                FROM `donhang_chitiet` dh_chitiet join `sanpham` sp on sp.MA_SP = dh_chitiet.MA_SP";
+                $result = $this->db->query($sql)->fetchAll();
+                return $result;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng chi tiết: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function getDonHangChiTiet1($ma_kh) {
+            try {
+                $sql = "SELECT dh.MA_DONHANG, dh.NGAYHOANTHANH, dh.DIACHI, dh.TONGTIEN, dh.TRANGTHAI, dh.GHICHU FROM `donhang` dh join `donhang_chitiet` dh_chitiet on dh.MA_DONHANG = dh_chitiet.MA_DONHANG
+                WHERE `MA_KH` = $ma_kh";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function getDonHang($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        
+
+        
+
         
     }
 ?>

@@ -25,11 +25,8 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=iPhone">iPhone</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Oppo">Oppo</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Samsung">Samsung</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Xiaomi">Xiaomi</a></li>
+                <li><a href="">Trang chủ</a></li>
+   
                 
             </ul>
         </nav>
@@ -59,7 +56,6 @@
                 <tbody id="cart-items">
                     <!-- Items will be dynamically loaded here -->
                     <?php foreach ($result as $rs) : ?>
-
                      <tr>
                         <td><img src="<?= BASE_URL . $rs['ANH_SP'] ?>" alt=""></td>
                         <td><?= $rs['TEN_SP'] ?></td>
@@ -99,32 +95,32 @@
                         
 
         <!-- form đặt hàng -->
-        <form method="POST" class="form col-lg-4">
+        <form action="?act=donhang" method="POST" enctype="multipart/form-data" class="form col-lg-4">
                     <?php
                         if (is_array($user)) {
                     // foreach($user as $us): ?>
-                    <span class="input-span">
-                        <label for="email" class="label">Email</label>
-                        <input value="<?= htmlspecialchars($user['EMAIL']) ?>" type="email" name="email" id="email"
-                    /></span>
                     <span class="input-span">
                         <label for="password" class="label">Họ tên</label>
                         <input value="<?= $user['NAME'] ?>" type="text" name="name" id="password"
                     /></span>
 
                     <span class="input-span">
+                        <label for="email" class="label">Email</label>
+                        <input value="<?= htmlspecialchars($user['EMAIL']) ?>" type="email" name="email" id="email"
+                    /></span>
+                    
+
+                    <span class="input-span">
                         <label for="password" class="label">Số điện thoại</label>
-                        <input value="<?= $user['SDT'] ?>" type="tel" name="password" id="password"
+                        <input value="<?= $user['SDT'] ?>" type="tel" name="sdt" id="password"
                     /></span>
 
                     <span class="input-span">
                         <label for="password" class="label">Địa chỉ</label>
-                        <input value="<?= $user['DIACHI'] ?>" type="text" name="password" id="password"
+                        <input value="<?= $user['DIACHI'] ?>" type="text" name="diachi" id="password"
                     /></span>
                         <!-- <?php  }?> -->
-
-                    <input class="submit" type="submit" value="Đặt hàng" />
-   
+                    <button name="submit_user" class="btn btn-success" type="submit">Đặt hàng</button>
             </form>
        
         </div>

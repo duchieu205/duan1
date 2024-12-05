@@ -27,7 +27,8 @@
         "logout" => (new queryControl) -> logout(),
         "cart" => (new cartControl) -> cart(),
         "deleteCart" => (new cartControl) -> deleteCart($id),
-        "donhang" => (new donhangControl) -> list()
+        "donhang" => (new donhangControl) -> list(),
+        "chitietdonhang" => (new donhangControl) -> chitiet($id)
     }
     
 ?>
