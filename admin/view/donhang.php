@@ -239,7 +239,9 @@
                                     <td><?= $rs->ghichu ?></td>
                                     <td>
                                         <a href="?act=chitiet&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-eye"></i></a>
+                                        <?php if ($rs->trangthai !== "Đã hủy") : ?>
                                         <a href="?act=trangthai&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

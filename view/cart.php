@@ -78,13 +78,14 @@
                 <?php if(!$result){ 
                          echo "Giỏ hàng trống"; 
                  } 
+                 
                 else { ?>
                     <p><strong>Tổng tiền tạm tính : <span id="cart-total"><?= number_format($tong) . " Đ" ?></span> </strong> </p>
                 <label class="mb-3" for=""><input checked type="radio">Thanh toán khi nhận hàng</label>
                 <p><strong>Phí ship COD : 30.000 Đ</strong></p>
                 <h3 class="text-success mb-3">Tổng đơn hàng : <?= number_format($tong + 30000) . " Đ" ?></h3>
                 <?php }
-                ?>  <br>
+                ?>  <br> <br>
                 <a href="?act=shop" class="btn btn-outline-success">Mua thêm</a>
 
             </div>

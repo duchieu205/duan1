@@ -53,6 +53,7 @@
                 }
             }
             $result = $this->donhangControl->getDonHang($_SESSION['ma_kh']);
+
             include("view/donhang.php");
         }
 
@@ -64,6 +65,14 @@
             $result1 = $this->donhangControl->getDonHangChiTiet1($ma_donhang);
  
             include("view/chitietdonhang.php");
+        }
+
+        public function huydon() {
+            if (isset($_POST['btn_huydon'])) {
+                $this->donhangControl->huydon($_POST['ma_donhang'], $_POST['lidohuydon']);
+                header("Location: ?act=donhang");
+                exit();
+            }
         }
     }
 ?>

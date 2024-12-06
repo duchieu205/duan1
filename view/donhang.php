@@ -15,6 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đơn hàng</title>
     <link rel="stylesheet" href="css/ctsp.css?v=<?php echo time() ?>">
+    <link rel="stylesheet" href="css/ctsp1.css?v=<?php echo time() ?>">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
@@ -25,12 +27,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=iPhone">iPhone</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Oppo">Oppo</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Samsung">Samsung</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Xiaomi">Xiaomi</a></li>
-                
+                <li><a href="?act=shop">Trang chủ</a></li>
             </ul>
         </nav>
         <div class="search-cart">
@@ -70,8 +67,11 @@
                         <td><?= $rs['TRANGTHAI'] ?></td>
                         <td><?= $rs['GHICHU'] ?></td>
                         <td>
-                            <a  return onclick="confirm('Bạn có chắc muốn hủy ?')" ><button  class="btn btn-danger btn-sm">Hủy</button></a>
+                            <?php if ($rs['TRANGTHAI'] !== "Đã hủy" && $rs['TRANGTHAI'] !== "Đã xác nhận" && $rs['TRANGTHAI'] !== "Đang giao" && $rs['TRANGTHAI'] !== "Thành công") { ?>
+                            <button onclick="huyDon('<?= $rs['MA_DONHANG'] ?>')"   class="btn btn-danger btn-sm">Hủy</button>
+                            <?php } ?>
                             <button class="btn btn-success" popovertarget="my-popover">Trả hàng/ Hoàn tiền</button>
+                            <br>
                             <a href="?act=chitietdonhang&id=<?= $rs['MA_DONHANG'] ?>"><button class="btn btn-success">Chi tiết đơn hàng</button></a>
                         </td>
                      </tr>
@@ -87,14 +87,34 @@
         </div>
 
         <div id="my-popover" popover>
-            <form action="">
-                <label for="lido">Nhập lí do trả hàng : </label>
-                <input name="lido" type="text"> <br>
+            <form action="" method="POST">
+                <label for="lido">Nhập lí do trả hàng : </label>  
+                <input name="lidotrahang" type="text"> <br> <br>
                 <button class="btn btn-success" type="submit">Xác nhận</button>
             </form>
         </div>
-    </div>
 
+        <div id="popover_huy" popover>
+            <form action="?act=huydon" method="POST">
+                <input type="hidden" name="ma_donhang" id="ma_donhanghuy">
+                <label for="lidohuydon">Nhập lí do hủy đơn : </label> <br>
+                <input name="lidohuydon" type="text"> <br> <br>
+                <button name="btn_huydon" class="btn btn-success" type="submit">Xác nhận</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function huyDon(maDonHang) {
+            document.getElementById('ma_donhanghuy').value = maDonHang;
+            const popoverHuy = document.getElementById('popover_huy');
+            popoverHuy.style.display = 'block'; // Hiển thị popover
+        }
+        document.querySelector('#popover_huy form').onsubmit = function() {
+        document.getElementById('popover_huy').style.display = 'none';
+        };
+
+    </script>
 
 </body>
 </html>

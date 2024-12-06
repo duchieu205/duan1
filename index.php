@@ -28,7 +28,8 @@
         "cart" => (new cartControl) -> cart(),
         "deleteCart" => (new cartControl) -> deleteCart($id),
         "donhang" => (new donhangControl) -> list(),
-        "chitietdonhang" => (new donhangControl) -> chitiet($id)
+        "chitietdonhang" => (new donhangControl) -> chitiet($id),
+        "huydon" => (new donhangControl) -> huydon()
     }
     
 ?>

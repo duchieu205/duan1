@@ -56,7 +56,6 @@
                                     <input name="quantity" id="quantity" type="hidden" min="1" value="1"> 
                                     <button type="submit">Thêm vào giỏ hàng</button>
                                 </form>
-   
                         </div>
             <?php endforeach; ?>
         </div>
