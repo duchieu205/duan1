@@ -214,42 +214,27 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Mã đơn hàng</th>
-                                    <th scope="col">Mã khách hàng</th>
-                                    <th scope="col">Ngày đặt hàng</th>
-                                    <th scope="col">Địa chỉ</th>
-                                    <th scope="col">Tổng tiền</th>
-                                    <th scope="col">Trạng thái</th>
-                                    <th scope="col">Ghi chú</th>
-                                    <th scope="col">Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($result as $rs) :?>
-                                <tr>
-                                    <td><?= $rs->ma_dh ?></td>
-                                    <td><?= $rs->ma_kh ?></td>
-                                    <td><?= $rs->ngayhoanthanh ?></td>
-                                    <td><?= $rs->diachi ?></td>
-                                    <td><?= number_format($rs->tong) . " Đ" ?></td>
-                                    <td><?= $rs->trangthai ?></td>
-                                    <td><?= $rs->ghichu ?></td>
-                                    <td>
-                                        <a href="?act=chitiet&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-eye"></i></a>
-                                        <a href="?act=trangthai&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-
+                    <h5>Mã đơn hàng : <?= $result['MA_DONHANG'] ?></h5>
+                    <h5>Mã khách hàng hàng : <?= $result['MA_KH'] ?></h5>
+                    <h5>Trạng thái đơn hàng hiện tại :  <?= $result['TRANGTHAI'] ?></h5>
+                    <form action="?act=updateTrangthai&id=<?= $result['MA_DONHANG'] ?>" method="POST">
+                        <h5>Cập nhật trạng thái :
+                            <select name="new_trangthai" id="">
+                                <option value="Chờ xử lí" <?= $result['TRANGTHAI'] == 'Chờ xử lí' ?  'selected' : ""  ?>>Chờ xử lí</option>
+                                <option value="Đã xác nhận" <?= $result['TRANGTHAI'] == "Đã xác nhận" ?  'selected' : "" ?>>Đã xác nhận</option>
+                                <option value="Đang giao" <?=$result['TRANGTHAI'] == 'Đang giao' ?  'selected' : ""?>>Đang giao</option>
+                                <option value="Thành công" <?= $result['TRANGTHAI'] == 'Thành công' ?  'selected' : "" ?>>Thành công</option>
+                            </select>
+                        </h5>
+       
+                        <button name="submit_trangthai" class="btn btn-success" type="submit">Xác nhận</button>
+                    </form>
+                    <a href="?act=donhang"><button class="btn btn-danger">Quay lại</button></a>
                 </div>
                 
 
             </div>
+    
             <!-- End of Main Content -->
 
             <!-- Footer -->

@@ -214,37 +214,43 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                <a href="?act=donhang"><button class="button1">Quay lại giỏ hàng</button></a>
                 <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th scope="col">Mã đơn hàng chi tiết</th>
                                     <th scope="col">Mã đơn hàng</th>
-                                    <th scope="col">Mã khách hàng</th>
-                                    <th scope="col">Ngày đặt hàng</th>
-                                    <th scope="col">Địa chỉ</th>
+                                    <th scope="col">Mã sản phẩm</th>
+                                    <th scope="col">Ảnh sản phẩm</th>
+                                    <th scope="col">Thanh toán</th>
+                                    <th scope="col">Số Lượng</th>
                                     <th scope="col">Tổng tiền</th>
-                                    <th scope="col">Trạng thái</th>
-                                    <th scope="col">Ghi chú</th>
-                                    <th scope="col">Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($result as $rs) :?>
+                                <?php $id = 1; foreach ($result as $rs) :?>
                                 <tr>
-                                    <td><?= $rs->ma_dh ?></td>
-                                    <td><?= $rs->ma_kh ?></td>
-                                    <td><?= $rs->ngayhoanthanh ?></td>
-                                    <td><?= $rs->diachi ?></td>
-                                    <td><?= number_format($rs->tong) . " Đ" ?></td>
-                                    <td><?= $rs->trangthai ?></td>
-                                    <td><?= $rs->ghichu ?></td>
-                                    <td>
-                                        <a href="?act=chitiet&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-eye"></i></a>
-                                        <a href="?act=trangthai&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    </td>
+                                    <td><?= $id++  ?></td>
+                                    <td><?= $rs['MA_DONHANG'] ?></td>
+                                    <td><?= $rs['MA_SP'] ?></td>
+                                    <td><img src="<?= BASE_URL . $rs['ANH_SP'] ?> " alt=""></td>
+                                    <td><?= $rs['THANHTOAN'] ?></td>
+                                    <td><?= $rs['SOLUONG'] ?></td>
+                                    <td><?= number_format($rs['GIA_SP']) . " Đ" ?></td>
+
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+           
+                        <div class="col-lg-4 ">
+                            <?php if(is_array($result1)) { ?>
+                            <p><strong>Tổng tiền tạm tính : <span id="cart-total"><?= number_format($result1['TONGTIEN']) . " Đ" ?></span> </strong> </p>
+                            <label class="mb-3" for="">Phương thức thanh toán : Thanh toán khi nhận hàng</label>
+                            <p><strong>Phí ship COD : 30.000 Đ</strong></p>
+                            <h3 class="text-success mb-3">Tổng đơn hàng : <?= number_format($result1['TONGTIEN'] + 30000) . " Đ" ?></h3>
+                            <?php }?>
+                        </div>
 
                 </div>
                 

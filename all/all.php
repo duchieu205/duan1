@@ -45,9 +45,9 @@
         public $ma_dh;
         public $ma_kh;
         public $ngayhoanthanh;
-        public $phuongthuc;
         public $diachi;
         public $tong;
         public $trangthai;
+        public $ghichu;
     }
 ?>

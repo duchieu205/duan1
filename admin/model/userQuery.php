@@ -44,6 +44,18 @@
             }
         }
 
+        public function getUser() {
+            try {
+                $sql = "SELECT MA_KH FROM `khachhang` ";
+                $data = $this->pdo->query($sql)->fetch();
+                return $data;
+            }
+            catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
+
         
     } 
 ?>

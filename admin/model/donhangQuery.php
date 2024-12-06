@@ -10,63 +10,6 @@
             $this->db = NULL;
         }
 
-        // public function createDonhang($ma_kh) {
-        //     try {
-        //         $sql = "INSERT INTO donhang (MA_KH)
-        //                 VALUES (:ma_kh)";
-        //         $stmt = $this->db->prepare($sql);
-        //         $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
-        //         $stmt->execute();
-                
-        //         $ma_donhang = $this->db->lastInsertId();
-
-        //         return $ma_donhang;
-
-        
-        //     } catch (Exception $e) {
-        //         echo "Lỗi tạo đơn hàng: " . $e->getMessage();
-        //         return $e->getMessage();
-        //     }
-        // }
-
-        public function addDonhang($ma_kh, $dia_chi, $tong_tien) {
-            try {
-                $sql = "INSERT INTO donhang (MA_KH, NGAYHOANTHANH, DIACHI, TONGTIEN, TRANGTHAI, GHICHU)
-                        VALUES (:ma_kh, NOW(), :dia_chi, :tong_tien, 'Chờ xử lí', NULL)";
-                $stmt = $this->db->prepare($sql);
-        
-                $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
-                $stmt->bindParam(':tong_tien', $tong_tien, PDO::PARAM_INT);
-                $stmt->bindParam(':dia_chi', $dia_chi, PDO::PARAM_STR);
-                return $stmt->execute();
-        
-            
-            } 
-            catch (Exception $e) {
-                echo "Lỗi tạo đơn hàng: " . $e->getMessage();
-                return $e->getMessage();
-            }
-        }
-
-        public function addDonHangChiTiet($ma_donhang, $ma_sp, $soluong, $gia_sp) {
-            try {
-                $sql = "INSERT INTO `donhang_chitiet` (MA_DONHANG, MA_SP, THANHTOAN, SOLUONG, GIA_SP)
-                VALUES (:ma_donhang, :ma_sp, 'Ship COD', :soluong, :gia_sp)";
-                $stmt = $this->db->prepare($sql);
-                $stmt->execute([
-                    ':ma_donhang' => $ma_donhang,
-                    ':ma_sp' => $ma_sp,
-                    ':soluong' => $soluong,
-                    ':gia_sp' => $gia_sp
-                ]);
-            }
-            catch (Exception $e) {
-                echo "Lỗi đơn hàng chi tiết: " . $e->getMessage();
-                return $e->getMessage();
-            }
-        }
-
-
         public function getMA_KHACHHANG($ma_kh) {
             try {
                 // Kiểm tra xem MA_KH đã có đơn hàng chưa
@@ -85,11 +28,13 @@
             }
         }
 
+
         public function getDonHangChiTiet($ma_donhang) {
             try {
                         $sql = "SELECT sp.TEN_SP, sp.ANH_SP, dh_chitiet.MA_DONHANG, dh_chitiet.MA_SP, 
                             dh_chitiet.THANHTOAN, dh_chitiet.SOLUONG, dh_chitiet.GIA_SP, 
-                            (dh_chitiet.SOLUONG * dh_chitiet.GIA_SP) as total_price
+                            (dh_chitiet.SOLUONG * dh_chitiet.GIA_SP) as total_price,
+                            dh.TRANGTHAI
                         FROM `donhang` dh
                         JOIN `donhang_chitiet` dh_chitiet on dh_chitiet.MA_DONHANG = dh.MA_DONHANG
                         JOIN `sanpham` sp ON sp.MA_SP = dh_chitiet.MA_SP
@@ -124,11 +69,23 @@
             }
         }
 
-        public function getDonHang($ma_kh) {
+        public function getDonHang() {
             try {
-                $sql = "SELECT * FROM `donhang`
-                WHERE `MA_KH` = $ma_kh ORDER BY `MA_DONHANG` DESC";
-                return $this->db->query($sql)->fetchAll();
+                $sql = "SELECT * FROM `donhang` ORDER BY MA_DONHANG DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
             }
             catch (Exception $e) {
                 echo "Lỗi đơn hàng: " . $e->getMessage();
@@ -136,11 +93,28 @@
             }
         }
 
-        
 
-       
-        
+        public function getTrangThaiDonHang($ma_donhang) {
+            try {
+                $sql = "SELECT MA_DONHANG, MA_KH, TRANGTHAI FROM `donhang` WHERE `MA_DONHANG` = $ma_donhang";
+                return $this->db->query($sql)->fetch();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
 
+        public function updateTrangThai($trangthai, $ma_dh) {
+            try {
+                $sql = "UPDATE `donhang` SET `TRANGTHAI` = '$trangthai'  WHERE `MA_DONHANG` = '$ma_dh'";
+                return $this->db->exec($sql);
+            }
+            catch (Exception $e) {
+                echo "Lỗi thay đổi trạng thái: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
         
 
         

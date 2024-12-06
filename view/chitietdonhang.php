@@ -71,14 +71,22 @@
                 </tbody>
             </table>
             
-      
+        <div class="user">
+            <h3>Thông tin người nhận</h3>
+            <p>Họ và tên : <?= $user['NAME'] ?></p>
+            <p>Email : <?= $user['EMAIL'] ?></p>
+            <p>Số điện thoại : <?= $user['SDT'] ?></p>
+            <p>Địa chỉ : <?= $user['DIACHI'] ?></p>
+        </div>
                         
         </div>
             <div class="col-lg-4 ">
+                <?php if(is_array($result1)) { ?>
                 <p><strong>Tổng tiền tạm tính : <span id="cart-total"><?= number_format($result1['TONGTIEN']) . " Đ" ?></span> </strong> </p>
                 <label class="mb-3" for="">Phương thức thanh toán : Thanh toán khi nhận hàng</label>
                 <p><strong>Phí ship COD : 30.000 Đ</strong></p>
                 <h3 class="text-success mb-3">Tổng đơn hàng : <?= number_format($result1['TONGTIEN'] + 30000) . " Đ" ?></h3>
+                <?php }?>
             </div>
             <!-- điều hướng -->
             <a href="?act=donhang"><button class="btn btn-success">Quay lại đơn hàng</button></a>

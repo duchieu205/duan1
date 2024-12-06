@@ -19,7 +19,7 @@
                 $ma_kh = $_SESSION['ma_kh'] ?? NULL;
                 $this->userControl->updateUser($_POST['name'], $_POST['email'] , $_POST['diachi'], $_POST['sdt'], $ma_kh);
                 $result = $this->cartControl->mycart(); // hàm lấy sản phẩm từ giỏ hàng
-                var_dump($result);
+
                 $user = $this->userControl->getUser($ma_kh); // hàm lấy thông tin user
                 if ($result) {
                     $total_price = 0;
@@ -53,13 +53,16 @@
                 }
             }
             $result = $this->donhangControl->getDonHang($_SESSION['ma_kh']);
-            var_dump($result);
             include("view/donhang.php");
         }
 
         public function chitiet($ma_kh) {
-            $result = $this->donhangControl->getDonHangChiTiet();
-            $result1 = $this->donhangControl->getDonHang($_SESSION['ma_kh']);
+            $ma_donhang = $_GET['id'];
+            $user = $this->userControl->getUser($_SESSION['ma_kh']); // hàm lấy thông tin user
+            $result = $this->donhangControl->getDonHangChiTiet($ma_donhang);
+            
+            $result1 = $this->donhangControl->getDonHangChiTiet1($ma_donhang);
+ 
             include("view/chitietdonhang.php");
         }
     }

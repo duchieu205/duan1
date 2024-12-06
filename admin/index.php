@@ -8,6 +8,10 @@
     require("model/userQuery.php");
     require("control/userControl.php");
 
+    require("model/donhangQuery.php");
+    require("control/donhangControl.php");
+
+
 
 
     
@@ -29,8 +33,10 @@
 
         "danhmuc" => (new queryControl) -> danhmuc(),
         "binhluan" => (new queryControl) -> binhluan(),
-        "donhang" => (new queryControl) -> donhang(),
-
+        "donhang" => (new donhangControl) -> list(),
+        "chitiet" => (new donhangControl) -> chitiet($id), 
+        "trangthai" => (new donhangControl) -> trangthai($id),
+        "updateTrangthai" => (new donhangControl) -> updateTrangthai($id),
         "logout" => (new userControl) -> logout()
     }
 ?>
