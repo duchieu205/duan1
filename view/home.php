@@ -57,7 +57,7 @@
                                 <a href="?act=detail&id=<?= $rs->ma_sp ?>"><?= $rs->name ?></a>
                             </h3>
                             <p>Giá: <span><strong><?= number_format($rs->gia) . " Đ" ?></strong></span></p>
-                            <a href="?act=cart"><button class="dathang" name="mua_sp">Thêm vào giỏ hàng</button></a>
+                            <a href="?act=detail&id=<?= $rs->ma_sp ?>"><button class="dathang" name="mua_sp">Xem chi tiết</button></a>
                         </div>
             <?php endforeach; ?>
         </div>

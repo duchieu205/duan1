@@ -58,7 +58,8 @@
 
                     <p><strong><?= $rs->mota ?> </strong></p>
                 </div>
-            
+                
+                <?php if($rs->soluong > 0) { ?>
                 <div class="confirm">
                                 <form method="POST" action="?act=cart">
                                     <input type="hidden" name="ma_sanpham" value="<?= $rs->ma_sp ?>">
@@ -67,7 +68,10 @@
                                     <button name="btn_submit" type="submit">Thêm vào giỏ hàng</button>
                                 </form>                 
                 </div>
-                <?php endforeach; ?>
+                <?php }
+                else { ?> 
+                    <h3>Sản phẩm này hiện tại đã hết hàng. Vui lòng mua sản phẩm khác !</h3>
+                <?php } endforeach; ?>
             </div>
             
         

@@ -3,11 +3,12 @@
         public $donhangControl;
         public $userControl;
         public $cartControl;
-
+        public $queryControl;
         public function __construct() {
             $this->donhangControl = new donhangQuery;
             $this->userControl = new userQuery;
             $this->cartControl = new cartQuery;
+            $this->queryControl = new Query;
         }
 
         public function __destruct() {
@@ -44,16 +45,16 @@
                         $soluong_sp = $product['SOLUONG'];
                         $gia_sp = $product['GIA_SP'];
                         $donhangchitiet = $this->donhangControl->addDonHangChiTiet($ma_donhang, $ma_sp, $soluong_sp, $gia_sp);
+                        $this->queryControl->updateSoLuongSanPham($ma_sp, $soluong_sp);
                     }
                     }
                     else {
                         echo "Thất bại";
                     }
-                    $this->cartControl->deleteALlCart($_SESSION['ma_kh']);
+                    $this->cartControl->deleteALlCart($_SESSION['ma_kh']); // xóa sản phẩm trong giỏ hàng
                 }
             }
             $result = $this->donhangControl->getDonHang($_SESSION['ma_kh']);
-
             include("view/donhang.php");
         }
 

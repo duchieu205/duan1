@@ -23,11 +23,10 @@
                 $sql = "INSERT INTO giohang_item (MA_SP, MA_KH, SOLUONG) VALUES (:ma_sp, :ma_kh, :soluong)";
                 $stmt = $this->db->prepare($sql);
                 
-                // Gán giá trị cho các tham số
                 $stmt->bindParam(':ma_sp', $ma_sp, PDO::PARAM_INT);
                 $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
                 $stmt->bindParam(':soluong', $soluong, PDO::PARAM_INT);
-                // Thực thi câu lệnh
+
                 $stmt->execute();
 
             }

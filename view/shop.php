@@ -51,11 +51,7 @@
                                 <a href="?act=detail&id=<?= $rs->ma_sp ?>"><?= $rs->name ?></a>
                             </h3>
                             <p>Giá: <span><strong><?= number_format($rs->gia) . " Đ" ?></strong></span></p>
-                            <form method="POST" action="?act=cart">
-                                    <input type="hidden" name="ma_sanpham" value="<?= $rs->ma_sp ?>">
-                                    <input name="quantity" id="quantity" type="hidden" min="1" value="1"> 
-                                    <button type="submit">Thêm vào giỏ hàng</button>
-                                </form>
+                            <a href="?act=detail&id=<?= $rs->ma_sp ?>"><button class="dathang" name="mua_sp">Xem chi tiết</button></a>
                         </div>
             <?php endforeach; ?>
         </div>

@@ -73,7 +73,17 @@
 
             }
             catch (Exception $e) {
-                echo "Lỗi đăng ký" . $e->getMessage();
+                echo "Lỗi chi tiết sản phẩm" . $e->getMessage();
+            }
+        }
+
+        public function updateSoLuongSanPham($ma_sp, $soluong) {
+            try {
+                $sql = "UPDATE `sanpham` SET `SOLUONG_SP` = SOLUONG_SP - '$soluong' WHERE `MA_SP` = '$ma_sp'";
+                return $this->pdo->exec($sql);
+            }
+            catch (Exception $e) {
+                echo "Lỗi update số lượng sản phẩm" . $e->getMessage();
             }
         }
 
