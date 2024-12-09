@@ -10,24 +10,7 @@
             $this->db = NULL;
         }
 
-        // public function createDonhang($ma_kh) {
-        //     try {
-        //         $sql = "INSERT INTO donhang (MA_KH)
-        //                 VALUES (:ma_kh)";
-        //         $stmt = $this->db->prepare($sql);
-        //         $stmt->bindParam(':ma_kh', $ma_kh, PDO::PARAM_INT);
-        //         $stmt->execute();
-                
-        //         $ma_donhang = $this->db->lastInsertId();
 
-        //         return $ma_donhang;
-
-        
-        //     } catch (Exception $e) {
-        //         echo "Lỗi tạo đơn hàng: " . $e->getMessage();
-        //         return $e->getMessage();
-        //     }
-        // }
 
         public function addDonhang($ma_kh, $dia_chi, $tong_tien) {
             try {
@@ -140,6 +123,17 @@
             try {
                 $sql = "UPDATE `donhang` SET GHICHU = '$ghichu', TRANGTHAI = 'Đã hủy' WHERE MA_DONHANG = '$ma_donhang'";
                 return $this->db->exec($sql);
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function getTrangThaiDonHang($ma_kh) {
+            try {
+                $sql = "SELECT TRANGTHAI FROM donhang WHERE MA_DONHANG = '$ma_kh'";
+                return $this->db->query($sql)->fetch();
             }
             catch (Exception $e) {
                 echo "Lỗi đơn hàng: " . $e->getMessage();

@@ -9,7 +9,8 @@
     require("model/userQuery.php");
     require("model/donhangQuery.php");
     require("control/donhangControl.php");
-
+    require("model/binhluanQuery.php");
+    require("control/binhluanControl.php");
     // require("")
 
 

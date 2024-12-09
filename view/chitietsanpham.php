@@ -18,11 +18,8 @@
         </div>
         <nav>
         <ul>
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=iPhone">iPhone</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Oppo">Oppo</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Samsung">Samsung</a></li>
-                <li><a href="index.php?act=thuonghieu&thuonghieu=Xiaomi">Xiaomi</a></li>
+                <li><a href="?act=shop">Trang chủ</a></li>
+
                 
             </ul>
         </nav>
@@ -80,13 +77,18 @@
         </section>
 
         <!-- Bình luận sản phẩm -->
+         <?php if(isset($_SESSION['email'])) { ?>
         <section class="product-comments">
             <h2>Bình luận</h2>
-            <form action="?act=binhluan&id=<?php echo $ma_sp; ?>" method="post">
+            <form class="comment" enctype="multipart/form-data" action="?act=binhluan&id=<?php echo $ma_sp; ?>" method="post">
                 <textarea name="comment" rows="4" placeholder="Viết bình luận của bạn..."></textarea>
                 <button type="submit" class="btn btn-secondary">Gửi bình luận</button>
             </form>
         </section>
+        <?php }
+        else { ?>
+            Vui lòng <a href="">Đăng nhập</a> để bình luận
+        <?php } ?>
     </main>
 
     <!-- Footer -->

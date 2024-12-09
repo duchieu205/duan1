@@ -64,15 +64,25 @@
             $result = $this->donhangControl->getDonHangChiTiet($ma_donhang);
             
             $result1 = $this->donhangControl->getDonHangChiTiet1($ma_donhang);
- 
+
+            var_dump($this->donhangControl->getTrangThaiDonHang($ma_donhang));
             include("view/chitietdonhang.php");
         }
 
         public function huydon() {
             if (isset($_POST['btn_huydon'])) {
+
+                $trangthai = $this->donhangControl->getTrangThaiDonHang($_POST['ma_donhang']);
+                if ($trangthai['TRANGTHAI'] === "Đã xác nhận" || $trangthai['TRANGTHAI']  === "Đang giao" || $trangthai['TRANGTHAI']  === "Thành công") {
+                    echo "<script>alert('Không thể hủy vì đơn hàng đã được xác nhận');
+                    window.location.href = '?act=donhang';
+                    </script>";
+                }
+                else {
                 $this->donhangControl->huydon($_POST['ma_donhang'], $_POST['lidohuydon']);
                 header("Location: ?act=donhang");
                 exit();
+                }
             }
         }
     }
