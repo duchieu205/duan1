@@ -102,11 +102,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item active">
-                <a class="nav-link" href="?act=binhluan">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Bình luận</span></a>
-            </li>
+         
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -214,8 +210,47 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                   <!-- content Thống Kê -->
-                   <!-- ghi trong đây -->
+                <a href="?act=product"><button class="button1">Quay lại</button></a>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Tên khách hàng</th>
+                                    <th scope="col">Mã sản phẩm</th>
+                                    <th scope="col">Mã khách hàng</th>
+                                    <th scope="col">Bình luận</th>
+                                    <th scope="col">Ngày bình luận</th>
+                                    <th scope="col">Trạng thái</th>
+                                    <th scope="col">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                            
+                                    if (isset($result)) {
+                                foreach ($result as $rs) :?>
+                                <tr>
+                                    <td><?= $rs['MA_BINHLUAN'] ?></td>
+                                    <td><?= $rs['NAME'] ?></td>
+                                    <td><?= $rs['MA_SP'] ?></td>
+
+                                    <td><?= $rs['MA_KH'] ?></td>
+                                    <td><?= $rs['BINHLUAN'] ?></td>
+                                    <td><?= $rs['NGAYBINHLUAN'] ?></td>
+                                    <td><?= $rs['TRANGTHAI'] ?></td>
+                                    <td>
+                                        <?php if ($rs['TRANGTHAI'] === "Chờ xác nhận") : ?>
+                                            <form action="?act=updateBinhLuan" method="POST">
+                                                <input type="hidden" name="ma_sp" value="<?= $rs['MA_SP'] ?>">
+                                                <input type="hidden" name="ma_binhluan" value="<?= $rs['MA_BINHLUAN'] ?>">
+                                                <button onclick="return confirm('Duyệt chứ ?')" name="btn_binhluan" class="btn btn-success">Duyệt</button>
+                                            </form>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; }?>
+                            </tbody>
+                        </table>
 
                 </div>
                 

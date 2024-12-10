@@ -74,20 +74,28 @@
         
     </div>
 
+        <div class="binhluan">
+            <?php foreach($listBinhLuan as $list) : ?>
+            <span><strong>Khách hàng <?= $list['NAME']?> đã bình luận : </strong><?= $list['BINHLUAN'] ?></span> <br> <br>
+            <?php endforeach; ?>
+        </div>
+
         </section>
 
         <!-- Bình luận sản phẩm -->
          <?php if(isset($_SESSION['email'])) { ?>
         <section class="product-comments">
             <h2>Bình luận</h2>
-            <form class="comment" enctype="multipart/form-data" action="?act=binhluan&id=<?php echo $ma_sp; ?>" method="post">
+            <form class="comment" action="?act=binhluan" method="POST">
+                <input type="hidden" name="ma_sp" value="<?= $result[0]->ma_sp ?>">
                 <textarea name="comment" rows="4" placeholder="Viết bình luận của bạn..."></textarea>
-                <button type="submit" class="btn btn-secondary">Gửi bình luận</button>
+                <button name="btn_binhluan" type="submit" class="btn btn-secondary">Gửi bình luận</button>
             </form>
         </section>
         <?php }
+
         else { ?>
-            Vui lòng <a href="">Đăng nhập</a> để bình luận
+            Vui lòng <a href="?act=signin">Đăng nhập</a> để bình luận
         <?php } ?>
     </main>
 
@@ -107,6 +115,6 @@
                 input.value = Math.min(Math.max(input.value, 1), max);
             } 
         });
-</script>
+    </script>
 </body>
 </html>

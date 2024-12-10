@@ -36,7 +36,6 @@
 
         public function updateTrangThai($id) {
             $result = $this->donhangControl->getTrangThaiDonHang($id);
-            var_dump($result['TRANGTHAI']);
             if (isset($_POST['submit_trangthai'])) {
                 $newTrangThai = $_POST['new_trangthai'];
                 $trangthaiHienTai = $result['TRANGTHAI'];

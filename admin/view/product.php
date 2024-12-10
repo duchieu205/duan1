@@ -103,11 +103,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="?act=binhluan">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Bình luận</span></a>
-            </li>
+            
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -226,6 +222,7 @@
                                     <td>
                                         <a href="?act=update&id=<?= $rs->id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <a return onclick="confirm('Bạn có chắc muốn xóa ?')" href="?act=delete&id=<?= $rs->id ?>"><i class="fa-solid fa-trash"></i></a>
+                                        <a href="?act=binhluan&id=<?= $rs->id ?>"><i class="fa-regular fa-comment"></i></a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

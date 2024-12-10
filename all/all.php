@@ -19,6 +19,7 @@
         public $ma_kh;
         public $binhluan;
         public $ngaybinhluan;
+        public $trangthai;
     }
 
 

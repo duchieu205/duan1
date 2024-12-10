@@ -30,7 +30,8 @@
         "deleteCart" => (new cartControl) -> deleteCart($id),
         "donhang" => (new donhangControl) -> list(),
         "chitietdonhang" => (new donhangControl) -> chitiet($id),
-        "huydon" => (new donhangControl) -> huydon()
+        "huydon" => (new donhangControl) -> huydon(),
+        "binhluan" => (new binhluanControl) -> binhluan($id)
     }
     
 ?>

@@ -4,9 +4,11 @@
     class queryControl {
         public $queryControl;
         public $cartControl;
+        public $binhluanControl;
         public function __construct() {
             $this->queryControl = new Query;
             $this->cartControl = new cartQuery;
+            $this->binhluanControl = new binhluanQuery;
         }
         public function __destruct() {
             $this->queryControl = NULL;
@@ -94,14 +96,11 @@
             }
             include("view/signin.php");
         }
-        // public function chitiet($id) {
-        //     $list = $this->queryControl->chitietProduct($id);
-        //     var_dump($list);
-        //     include("view/chitietsp.php");
-        // }
+
 
         public function detail($id) {
             $result = $this->queryControl->chitietProduct($id);
+            $listBinhLuan = $this->binhluanControl->getBinhLuan($id);
             include("view/chitietsanpham.php");
         }
 

@@ -103,11 +103,7 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="?act=binhluan">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Bình luận</span></a>
-            </li>
+
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">

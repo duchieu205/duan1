@@ -86,13 +86,6 @@
             include("view/danhmuc/danhmuc.php");
         }
 
-        public function binhluan() {
-            include("view/binhluan.php");
-        }
-
-        public function donhang() {
-            include("view/donhang.php");
-        }
 
         
     }
