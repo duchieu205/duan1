@@ -85,5 +85,17 @@
                 }
             }
         }
+
+        public function trahang() {
+            if (isset($_POST['btn_trahang'])) {
+                $ma_donhang = $_POST['ma_donhang'];
+                $ghichu = $_POST['lidotrahang'];
+                $this->donhangControl->trahang($ma_donhang, $ghichu);
+                echo "<script>alert('Yêu cầu trả hàng đã được gửi. Xin vui lòng chờ đợi !')
+                window.location.href = '?act=donhang'
+                </script>";
+            }
+            
+        }
     }
 ?>

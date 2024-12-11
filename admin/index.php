@@ -33,7 +33,8 @@
         "user" => (new userControl) -> user(),
         "deleteUser" => (new userControl) -> deleteUser($id),
 
-
+        "xacnhantrahang" => (new donhangControl) -> xacnhantrahang($id),
+        "tuchoitrahang" => (new donhangControl) -> tuchoitrahang($id),
         "danhmuc" => (new queryControl) -> danhmuc(),
         "donhang" => (new donhangControl) -> list(),
         "chitiet" => (new donhangControl) -> chitiet($id), 

@@ -115,6 +115,29 @@
                 return $e->getMessage();
             }
         }
+
+        public function xacnhanTraHang($ma_dh) {
+            try {
+                $sql = "UPDATE `donhang` SET TRANGTHAI = 'Xác nhận Trả hàng/Hoàn tiền' WHERE MA_DONHANG = '$ma_dh'";
+                return $this->db->exec($sql);
+            }
+            catch (Exception $e) {
+                echo "Lỗi thay đổi trạng thái: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function tuchoiTraHang($ma_dh) {
+            try {
+                $sql = "UPDATE `donhang` SET TRANGTHAI = 'Từ chối Trả hàng/Hoàn tiền' WHERE MA_DONHANG = '$ma_dh'";
+                return $this->db->exec($sql);
+            }
+            catch (Exception $e) {
+                echo "Lỗi thay đổi trạng thái: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+        
         
 
         

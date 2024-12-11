@@ -216,7 +216,6 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Tên khách hàng</th>
-                                    <th scope="col">Mã sản phẩm</th>
                                     <th scope="col">Mã khách hàng</th>
                                     <th scope="col">Bình luận</th>
                                     <th scope="col">Ngày bình luận</th>
@@ -232,7 +231,6 @@
                                 <tr>
                                     <td><?= $rs['MA_BINHLUAN'] ?></td>
                                     <td><?= $rs['NAME'] ?></td>
-                                    <td><?= $rs['MA_SP'] ?></td>
 
                                     <td><?= $rs['MA_KH'] ?></td>
                                     <td><?= $rs['BINHLUAN'] ?></td>

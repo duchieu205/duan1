@@ -66,5 +66,17 @@
                 
             }
         }
+
+        public function xacnhantrahang($id) {
+            $this->donhangControl->xacnhanTraHang($id);
+            echo "<script>alert('Thành công')
+            window.location.href = '?act=donhang'</script>";
+        }
+
+        public function tuchoitrahang($id) {
+            $this->donhangControl->tuchoiTraHang($id);
+            echo "<script>alert('Thành công')
+            window.location.href = '?act=donhang'</script>";
+        }
     }
 ?>

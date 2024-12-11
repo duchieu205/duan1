@@ -195,3 +195,14 @@ input[type="file"] {
   filter: brightness(.8);
  }
  
+
+ .fa-xmark {
+  color: red;
+  font-size: 20px;
+  margin-left: 5px;
+ }
+
+ .fa-check {
+  font-size: 20px;
+  margin-left: 5px;
+ }

@@ -235,9 +235,13 @@
                                     <td><?= $rs->ghichu ?></td>
                                     <td>
                                         <a href="?act=chitiet&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-eye"></i></a>
-                                        <?php if ($rs->trangthai !== "Đã hủy") : ?>
+                                        <?php if ($rs->trangthai !== "Đã hủy" && $rs->trangthai !== "Chờ xác nhận trả hàng/hoàn tiền" && $rs->trangthai !== "Xác nhận Trả hàng/Hoàn tiền" && $rs->trangthai !== "Từ chối Trả hàng/Hoàn tiền") { ?>
                                         <a href="?act=trangthai&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <?php endif; ?>
+                                        <?php } ?>
+                                        <?php if ($rs->trangthai == "Chờ xác nhận trả hàng/hoàn tiền") {?>
+                                            <a href="?act=xacnhantrahang&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-check"></i></a>
+                                            <a href="?act=tuchoitrahang&id=<?= $rs->ma_dh ?>"><i class="fa-solid fa-xmark"></i></a>
+                                        <?php }?>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

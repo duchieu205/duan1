@@ -141,6 +141,18 @@
             }
         }
 
+        public function trahang($ma_donhang, $ghichu) {
+            try {
+                $sql = "UPDATE `donhang` SET GHICHU = '$ghichu', TRANGTHAI = 'Chờ xác nhận trả hàng/hoàn tiền' WHERE MA_DONHANG = '$ma_donhang'";
+                return $this->db->exec($sql);
+            }
+
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
         
 
        

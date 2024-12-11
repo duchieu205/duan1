@@ -31,6 +31,7 @@
         "donhang" => (new donhangControl) -> list(),
         "chitietdonhang" => (new donhangControl) -> chitiet($id),
         "huydon" => (new donhangControl) -> huydon(),
+        "trahang" => (new donhangControl) -> trahang(),
         "binhluan" => (new binhluanControl) -> binhluan($id)
     }
     

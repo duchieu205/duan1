@@ -65,14 +65,27 @@
                         <td><?= $rs['NGAYHOANTHANH'] ?></td>
                         <td><?= $rs['DIACHI'] ?></td>
                         <td><?= $rs['TRANGTHAI'] ?></td>
-                        <td><?= $rs['GHICHU']?></td>
                         <td>
-                            <?php if ($rs['TRANGTHAI'] !== "Đã hủy" && $rs['TRANGTHAI'] !== "Đã xác nhận" && $rs['TRANGTHAI'] !== "Đang giao" && $rs['TRANGTHAI'] !== "Thành công") { ?>
-                            <button onclick="huyDon('<?= $rs['MA_DONHANG'] ?>')"   class="btn btn-danger btn-sm">Hủy</button>
+                        <?php if($rs['TRANGTHAI'] == "Đã hủy") { ?>
+                            Hủy đơn do : <?= $rs['GHICHU'] ?>
+                        <?php }
+                            if ($rs['TRANGTHAI'] == "Chờ xác nhận trả hàng/hoàn tiền") { ?>
+                            Trả hàng/ hoàn tiền do : <?= $rs['GHICHU'] ?>
+                         <?php   }
+       
+                            else { ?>
+                            <?= $rs['GHICHU'] ?>
+                        <?php }?>
+                        </td>
+                        
+                        
+                        <td>
+                            <?php if ($rs['TRANGTHAI'] === "Chờ xử lí" ) { ?>
+                            <button onclick="huyDon('<?= $rs['MA_DONHANG'] ?>')"  class="btn btn-danger btn-sm">Hủy</button>
                             <?php } ?>
-                            <?php if($rs['TRANGTHAI'] === "Thành công") : ?>
-                            <button class="btn btn-danger" popovertarget="my-popover">Trả hàng/ Hoàn tiền</button>
-                            <?php endif; ?>
+                            <?php if($rs['TRANGTHAI'] === "Thành công") { ?>
+                            <button onclick="traHang('<?= $rs['MA_DONHANG'] ?>')" class="btn btn-danger">Trả hàng/ Hoàn tiền</button>
+                            <?php } ?>
                             <a href="?act=chitietdonhang&id=<?= $rs['MA_DONHANG'] ?>"><button class="btn btn-success">Chi tiết đơn hàng</button></a>
                         </td>
                      </tr>
@@ -83,10 +96,11 @@
 
 
         <div id="my-popover" popover>
-            <form action="" method="POST">
-                <label for="lido">Nhập lí do trả hàng : </label>  
+            <form action="?act=trahang" method="POST">
+                <input type="hidden" name="ma_donhang" id="ma_donhang_trahang">
+                <label for="lidotrahang">Nhập lí do trả hàng : </label>  
                 <input name="lidotrahang" type="text"> <br> <br>
-                <button class="btn btn-success" type="submit">Xác nhận</button>
+                <button name="btn_trahang" class="btn btn-success" type="submit">Xác nhận</button>
             </form>
         </div>
 
@@ -106,9 +120,14 @@
             const popoverHuy = document.getElementById('popover_huy');
             popoverHuy.style.display = 'block'; // Hiển thị popover
         }
-        // document.querySelector('#popover_huy form').onsubmit = function() {
-        // document.getElementById('popover_huy').style.display = 'none';
-        // };
+
+        function traHang(maDonHang) {
+            document.getElementById('ma_donhang_trahang').value = maDonHang;
+            const popover = document.getElementById('my-popover');
+            popover.style.display = 'block'; // Hiển thị popover
+        }
+        
+        
 
     </script>
 
