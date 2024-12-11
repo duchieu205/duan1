@@ -153,6 +153,103 @@
             }
         }
 
+        public function donhang_dahuy($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh AND `TRANGTHAI` LIKE '%Đã hủy' ORDER BY `MA_DONHANG` DESC";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_choxuli($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh AND `TRANGTHAI` LIKE '%Chờ xử lí' ORDER BY `MA_DONHANG` DESC";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_daxacnhan($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh AND `TRANGTHAI` LIKE '%Đã xác nhận' ORDER BY `MA_DONHANG` DESC";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_danggiao($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh AND `TRANGTHAI` LIKE '%Đang giao' ORDER BY `MA_DONHANG` DESC";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_thanhcong($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh AND `TRANGTHAI` LIKE '%Thành công' ORDER BY `MA_DONHANG` DESC";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_tra($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh AND `TRANGTHAI` LIKE '%Xác nhận Trả hàng/Hoàn tiền' AND `TRANGTHAI` NOT LIKE '%Chờ%' ORDER BY `MA_DONHANG` DESC";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_choxacnhantra($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh AND `TRANGTHAI` LIKE '%Chờ xác nhận trả hàng/hoàn tiền' ORDER BY `MA_DONHANG` DESC";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_tuchoi($ma_kh) {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `MA_KH` = $ma_kh AND `TRANGTHAI` LIKE '%Từ chối Trả hàng/Hoàn tiền' ORDER BY `MA_DONHANG` DESC";
+                return $this->db->query($sql)->fetchAll();
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+
         
 
        

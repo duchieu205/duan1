@@ -42,6 +42,15 @@
         "updateTrangthai" => (new donhangControl) -> updateTrangthai($id),
         "logout" => (new userControl) -> logout(),
         "binhluan" => (new binhluanControl) -> binhluan($id),
-        "updateBinhLuan" => (new binhluanControl) -> updateBinhLuan()
+        "updateBinhLuan" => (new binhluanControl) -> updateBinhLuan(),
+
+        "donhangdahuy" => (new donhangControl) -> donhang_dahuy(),
+        "donhangchoxuli" => (new donhangControl) -> donhang_choxuli(),
+        "donhangdaxacnhan" => (new donhangControl) -> donhang_daxacnhan(),
+        "donhangdanggiao" => (new donhangControl) -> donhang_danggiao(),
+        "donhangthanhcong" => (new donhangControl) -> donhang_thanhcong(),
+        "donhangtra" => (new donhangControl) -> donhang_tra(),
+        "donhangchoxacnhantra" => (new donhangControl) -> donhang_choxacnhantra(),
+        "donhangtuchoi" => (new donhangControl) -> donhang_tuchoi()
     }
 ?>

@@ -20,10 +20,9 @@
         <nav>
             <ul>
                 <li><a href="?act=shop">Trang chủ</a></li>
-                <li><a href="#">iPhone</a></li>
-                <li><a href="#">Oppo</a></li>
-                <li><a href="#">Samsung</a></li>
-                <li><a href="#">Xiaomi</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Liên hệ</a></li>
+
                 
             </ul>
         </nav>

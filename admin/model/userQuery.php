@@ -55,6 +55,17 @@
             }
         }
 
+        public function getUserID($id) {
+            try {
+                $sql = "SELECT * FROM `khachhang` WHERE `MA_KH` = $id";
+                $data = $this->pdo->query($sql)->fetch();
+                return $data;
+            }
+            catch (Exception $e) {
+                return $e->getMessage();
+            }
+        }
+
 
         
     } 

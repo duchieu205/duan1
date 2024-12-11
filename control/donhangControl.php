@@ -71,7 +71,6 @@
 
         public function huydon() {
             if (isset($_POST['btn_huydon'])) {
-
                 $trangthai = $this->donhangControl->getTrangThaiDonHang($_POST['ma_donhang']);
                 if ($trangthai['TRANGTHAI'] === "Đã xác nhận" || $trangthai['TRANGTHAI']  === "Đang giao" || $trangthai['TRANGTHAI']  === "Thành công") {
                     echo "<script>alert('Không thể hủy vì đơn hàng đã được xác nhận');
@@ -97,5 +96,47 @@
             }
             
         }
+
+        public function donhang_dahuy() {
+            $result = $this->donhangControl->donhang_dahuy($_SESSION['ma_kh']);
+            include("view/donhangdahuy.php");
+        }
+
+
+        public function donhang_choxuli() {
+            $result = $this->donhangControl->donhang_choxuli($_SESSION['ma_kh']);
+            include("view/donhangchoxuli.php");
+
+        }
+
+        public function donhang_daxacnhan() {
+            $result = $this->donhangControl->donhang_daxacnhan($_SESSION['ma_kh']);
+            include("view/donhangdaxacnhan.php");
+        }
+
+        public function donhang_danggiao() {
+            $result = $this->donhangControl->donhang_danggiao($_SESSION['ma_kh']);
+            include("view/donhangdanggiao.php");
+        }
+
+        public function donhang_thanhcong() {
+            $result = $this->donhangControl->donhang_thanhcong($_SESSION['ma_kh']);
+            include("view/donhangthanhcong.php");
+        }
+
+        public function donhang_tra() {
+            $result = $this->donhangControl->donhang_tra($_SESSION['ma_kh']);
+            include("view/donhangtra.php");
+        }
+
+        public function donhang_choxacnhantra() {
+            $result = $this->donhangControl->donhang_choxacnhantra($_SESSION['ma_kh']);
+            include("view/donhangchoxacnhantra.php");
+        }
+        public function donhang_tuchoi() {
+            $result = $this->donhangControl->donhang_tuchoi($_SESSION['ma_kh']);
+            include("view/donhangtuchoi.php");
+        }
+        
     }
 ?>

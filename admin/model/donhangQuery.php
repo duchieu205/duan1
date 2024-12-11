@@ -140,6 +140,209 @@
         
         
 
+        // lọc đơn hàng
+
+
+        public function donhang_dahuy() {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `TRANGTHAI` LIKE '%Đã hủy' ORDER BY `MA_DONHANG` DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_choxuli() {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `TRANGTHAI` LIKE '%Chờ xử lí' ORDER BY `MA_DONHANG` DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_daxacnhan() {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `TRANGTHAI` LIKE '%Đã xác nhận' ORDER BY `MA_DONHANG` DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_danggiao() {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `TRANGTHAI` LIKE '%Đang giao' ORDER BY `MA_DONHANG` DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_thanhcong() {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `TRANGTHAI` LIKE '%Thành công' ORDER BY `MA_DONHANG` DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_tra() {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE  `TRANGTHAI` LIKE '%Xác nhận Trả hàng/Hoàn tiền' AND `TRANGTHAI` NOT LIKE '%Chờ%' ORDER BY `MA_DONHANG` DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_choxacnhantra() {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `TRANGTHAI` LIKE '%Chờ xác nhận trả hàng/hoàn tiền' ORDER BY `MA_DONHANG` DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
+        public function donhang_tuchoi() {
+            try {
+                $sql = "SELECT * FROM `donhang`
+                WHERE `TRANGTHAI` LIKE '%Từ chối Trả hàng/Hoàn tiền' ORDER BY `MA_DONHANG` DESC";
+                $result = $this->db->query($sql)->fetchAll();
+                $danhSach = [];
+                foreach ($result as $rs) {
+                    $donhang = new donhang;
+                    $donhang->ma_dh = $rs['MA_DONHANG'];
+                    $donhang->ma_kh = $rs['MA_KH'];
+                    $donhang->ngayhoanthanh = $rs['NGAYHOANTHANH'];
+                    $donhang->diachi = $rs['DIACHI'];
+                    $donhang->tong = $rs['TONGTIEN'];
+                    $donhang->trangthai = $rs['TRANGTHAI'];
+                    $donhang->ghichu = $rs['GHICHU'];
+                    $danhSach[] = $donhang;
+                }
+                return $danhSach;
+            }
+            catch (Exception $e) {
+                echo "Lỗi đơn hàng: " . $e->getMessage();
+                return $e->getMessage();
+            }
+        }
+
         
     }
 ?>

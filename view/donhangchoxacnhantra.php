@@ -50,7 +50,6 @@
             <a href="?act=donhangchoxacnhantra"><button class="btn btn-success">Chờ xác nhận trả hàng/hoàn tiền</button></a>
             <a href="?act=donhangtra"><button class="btn btn-success">Xác nhận Trả hàng/ Hoàn tiền</button></a>
             <a href="?act=donhangtuchoi"><button class="btn btn-success">Từ chối Trả hàng/ Hoàn tiền</button></a>
-
             <table class="table table-striped">
                 <thead class="bg-light">
                     <tr>
@@ -79,7 +78,7 @@
                         <?php if($rs['TRANGTHAI'] == "Đã hủy") { ?>
                             Hủy đơn do : <?= $rs['GHICHU'] ?>
                         <?php }
-                            if ($rs['TRANGTHAI'] == "Chờ xác nhận trả hàng/hoàn tiền" || $rs['TRANGTHAI'] == "Xác nhận Trả hàng/Hoàn tiền" || $rs['TRANGTHAI'] == "Từ chối Trả hàng/Hoàn tiền") { ?>
+                            if ($rs['TRANGTHAI'] == "Chờ xác nhận trả hàng/hoàn tiền") { ?>
                             Trả hàng/ hoàn tiền do : <?= $rs['GHICHU'] ?>
                          <?php   }
        
