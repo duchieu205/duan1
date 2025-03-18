@@ -65,7 +65,6 @@
             
             $result1 = $this->donhangControl->getDonHangChiTiet1($ma_donhang);
 
-            var_dump($this->donhangControl->getTrangThaiDonHang($ma_donhang));
             include("view/chitietdonhang.php");
         }
 
