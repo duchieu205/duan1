@@ -206,7 +206,7 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
+                <h1>Quản lý khách hàng</h1>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                         <table class="table table-striped">

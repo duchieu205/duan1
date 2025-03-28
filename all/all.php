@@ -31,6 +31,7 @@
     }
 
     class sanpham {
+        public $id;
         public $ma_sp;
         public $name;
         public $mota;

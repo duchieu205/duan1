@@ -192,10 +192,10 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                
+                <h1>Quản lý sản phẩm</h1>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                        <a href="?act=create"><button class="button1">Thêm mới</button></a>
+                        <a href="?act=create"><button class="button1">Thêm mới sản phẩm</button></a>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
